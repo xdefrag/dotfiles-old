@@ -1,0 +1,35 @@
+! colors
+*.foreground:   #eceff1
+*.background:   #263238
+*.cursorColor:  #eceff1
+*.color0:       #263238
+*.color8:       #37474f
+*.color1:       #ff9800
+*.color9:       #ffa74d
+*.color2:       #8bc34a
+*.color10:      #9ccc65
+*.color3:       #ffc107
+*.color11:      #ffa000
+*.color4:       #03a9f4
+*.color12:      #81d4fa
+*.color5:       #e91e63
+*.color13:      #ad1457
+*.color6:       #009688
+*.color14:      #26a69a
+*.color7:       #cfd8dc
+*.color15:      #eceff1
+
+!URxvt config
+URxvt.scrollBar: false
+URxvt.letterSpace: -1
+URxvt.font: xft:Fira Mono:size=16:autohint=false:antialias=true:hinting=true
+URxvt.boldFont: xft:Droid Sans Mono:size=14:autohint=false:antialias=true:hinting=true
+URxvt.italicFont: xft:Droid Sans Mono:italic:size=14:autohint=true
+URxvt.boldItalicFont: xft:Droid Sans Mono:bold:italic:size=14:autohint=true
+URxvt.internalBorder: 0
+URxvt.borderless: 1
+URxvt.perl-ext-common:default,clipboard
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.iso14755: false
+URxvt.iso14755_52: false
