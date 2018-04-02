@@ -1,3 +1,5 @@
+" neovim only
+
 " must have {{{
 set nocompatible
 set encoding=utf8
@@ -77,6 +79,11 @@ if dein#load_state('~/.cache/dein')
                 \ })
     " emojis, yeah!
     call dein#add('fszymanski/deoplete-emoji')
+    " }}}
+
+    " misc {{{
+    " simplenote integration
+    call dein#add('mrtazz/simplenote.vim')
     " }}}
 
     call dein#end()
@@ -205,6 +212,10 @@ let g:vdebug_options = {
             \ 'port' : 9001,
             \ }
 
+" simplenote
+" g:SimplenoteUsername, g:SimplenotePassword
+source ~/dotfiles/simplenoterc
+
 " }}}
 
 " helpers {{{
@@ -291,6 +302,12 @@ xmap <silent> <C-k> <Plug>(neosnippet_expand_target)
 
 " gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
+
+" simplenote
+nnoremap <silent> <leader>snl :SimplenoteList<CR>
+nnoremap <silent> <leader>sns :SimplenoteUpdate<CR>
+nnoremap <silent> <leader>snn :SimplenoteNew<CR>
+nnoremap <silent> <leader>snd :SimplenoteTrash<CR>
 " }}}
 
 " restoring settings
