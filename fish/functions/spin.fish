@@ -1,0 +1,1 @@
+/home/xdefrag/.config/fisherman/spin/spin.fish
