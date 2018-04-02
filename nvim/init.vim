@@ -22,8 +22,10 @@ if dein#load_state('~/.cache/dein')
     " advanced yanking
     call dein#add('vim-scripts/YankRing.vim')
     " fuzzy finder
-    call dein#add('/usr/local/opt/fzf')
-    call dein#add('junegunn/fzf.vim')
+    call dein#add('junegunn/fzf')
+    call dein#add('junegunn/fzf.vim', {
+                \ 'build' : './install --all',
+                \ })
     " git
     call dein#add('tpope/vim-fugitive')
     call dein#add('mhinz/vim-signify')
@@ -58,9 +60,13 @@ if dein#load_state('~/.cache/dein')
     call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php'})
     " mighty plugin for php composer project: autocomplete, refactoring,
     " managing use statements etc
-    call dein#add('phpactor/phpactor', {
-                \ 'build' : 'composer install',
+    " call dein#add('phpactor/phpactor', {
+    "             \ 'build' : 'composer install',
+    "             \ 'on_ft' : 'php',
+    "             \ })
+    call dein#add('lvht/phpcd.vim', {
                 \ 'on_ft' : 'php',
+                \ 'build' : 'composer install',
                 \ })
     " indenting and correcting simple errors on save
     call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php'})
@@ -73,11 +79,10 @@ if dein#load_state('~/.cache/dein')
     " autocomplete {{{
     " deoplete
     call dein#add('Shougo/deoplete.nvim', {
-                \ 'build' : 'UpdateRemotePlugins',
+                \ 'build' : ':UpdateRemotePlugins',
                 \ })
     " emojis, yeah!
     call dein#add('fszymanski/deoplete-emoji')
-    " }}}
 
     call dein#end()
     call dein#save_state()
@@ -175,9 +180,6 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeMapActivateNode = 'l'
 
-" fzf
-let g:fzf_command_prefix = 'Fzf'
-
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
@@ -191,11 +193,17 @@ let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 call neomake#configure#automake('w')
 
 " phpactor
-autocmd FileType php setlocal omnifunc=phpactor#Complete
+" autocmd FileType php setlocal omnifunc=phpactor#Complete
 
+" phpcd
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+ 
 " vim-php-namespace
 let g:php_namespace_sort_after_insert = 1
 
+" fzf
+let g:fzf_command_prefix = 'Fzf'
 
 " vim-php-refactoring-toolbox
 let g:vim_php_refactoring_use_default_mapping = 0
@@ -247,7 +255,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " buffers
 nnoremap <silent> q :bdelete<CR>
 nnoremap <silent> <Tab> <C-w>w 
-nnoremap <silent> <S-Tab> <C-w>W 
+nnoremap <silent> <S-Tab> <C-w>W
+nnoremap <silent> <leader>bp :bprev<CR>
+nnoremap <silent> <leader>bn :bnext<CR>
 
 " split
 nnoremap <silent> <leader>sj <C-W><C-J>
@@ -264,11 +274,12 @@ nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
 " php
-autocmd FileType php nnoremap <silent> <leader>ld :call phpactor#GotoDefinition()<CR>
-autocmd FileType php nnoremap <silent> <leader>lm :call phpactor#ContextMenu()<CR>
-autocmd FileType php nnoremap <silent> <leader>la :call phpactor#UseAdd()<CR>
-autocmd FileType php nnoremap <silent> <leader>lc :call phpactor#CopyFile()<CR>
-autocmd FileType php nnoremap <silent> <leader>lu :call IPhpInsertUse()<CR>
+" autocmd FileType php nnoremap <silent> <leader>ld :call phpactor#GotoDefinition()<CR>
+" autocmd FileType php nnoremap <silent> <leader>lm :call phpactor#ContextMenu()<CR>
+" autocmd FileType php nnoremap <silent> <leader>la :call phpactor#UseAdd()<CR>
+" autocmd FileType php nnoremap <silent> <leader>lc :call phpactor#CopyFile()<CR>
+autocmd FileType php nnoremap <silent> <leader>ld <C-]>
+autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>
 
 " common
 nnoremap <silent> <leader>lt :TagbarToggle<CR>
@@ -291,6 +302,12 @@ xmap <silent> <C-k> <Plug>(neosnippet_expand_target)
 
 " gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
+
+" yankring
+nnoremap <silent> <leader>ys :YRShow<CR>
+
+" open config
+nnoremap <silent> <leader>vc :edit ~/dotfiles/nvim/init.vim<CR>
 " }}}
 
 " restoring settings

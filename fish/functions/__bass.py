@@ -1,0 +1,1 @@
+/home/xdefrag/.config/fisherman/bass/functions/__bass.py

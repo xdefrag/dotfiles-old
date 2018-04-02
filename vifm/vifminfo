@@ -1,0 +1,138 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'b
+	/home/xdefrag/bin/
+	..
+1522658996
+'h
+	/home/xdefrag/
+	..
+1522658996
+
+# Bookmarks:
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/xdefrag
+	Code
+2
+d/home/xdefrag/Code
+	ifinum
+7
+d/home/xdefrag/Code/ifinum
+	api
+1
+d/home/xdefrag/Code/ifinum/api
+	src
+1
+d/home/xdefrag/Code/ifinum/api/src
+	tests
+10
+d/home/xdefrag/Code/ifinum/api/src/tests
+	Feature
+1
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature
+	Http
+2
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature/Http
+	Validations
+1
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature/Http/Validations
+	ServiceDesk
+1
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature/Http/Validations/ServiceDesk
+	..
+0
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature/Http/Validations
+	ServiceDesk
+1
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature/Http
+	Validations
+1
+d/home/xdefrag/Code/ifinum/api/src/tests/Feature
+	Http
+2
+d/home/xdefrag/Code/ifinum/api/src/tests
+	Feature
+1
+d/home/xdefrag/Code/ifinum/api/src
+	tests
+10
+d/home/xdefrag/Code/ifinum/api
+	src
+1
+d/home/xdefrag/Code/ifinum
+	api
+1
+d/home/xdefrag/Code
+	ifinum
+7
+d/home/xdefrag
+	dotfiles
+16
+d/home/xdefrag/dotfiles
+	vifm
+5
+d/home/xdefrag/dotfiles/vifm
+	scripts
+2
+d/home/xdefrag/dotfiles/vifm/scripts
+	..
+0
+d/home/xdefrag/dotfiles/vifm
+	colors
+1
+d/home/xdefrag/dotfiles/vifm/colors
+	solarized-dark.vifm
+1
+d
+
+# Right window history (oldest to newest):
+D/home/xdefrag
+	faf
+24
+D
+
+# Command line history (oldest to newest):
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/xdefrag/.local/share/vifm/Trash/000_Default.vifm
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/xdefrag/.local/share/vifm/Trash/000_vifm-help.txt
+	/home/xdefrag/dotfiles/vifm/vifm-help.txt
+t/home/xdefrag/.local/share/vifm/Trash/000_vifminfo
+	/home/xdefrag/dotfiles/vifm/vifminfo
+t/home/xdefrag/.local/share/vifm/Trash/000_README
+	/home/xdefrag/dotfiles/vifm/scripts/README
+t/home/xdefrag/.local/share/vifm/Trash/000_Default.vifm
+	/home/xdefrag/dotfiles/vifm/colors/Default.vifm
+
+# State:
+f
+i1
+[.1
+[F
+F
+I1
+].1
+]F
+s0
