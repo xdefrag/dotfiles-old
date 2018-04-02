@@ -14,7 +14,7 @@ if dein#load_state('~/.cache/dein')
 
     " essentials {{{
     " solorized colorscheme
-    call dein#add('altercation/vim-colors-solarized')
+    call dein#add('iCyMind/NeoSolarized')
     " fancy start screen with recent files
     call dein#add('mhinz/vim-startify')
     " filebrowser
@@ -58,12 +58,7 @@ if dein#load_state('~/.cache/dein')
     " php {{{
     " better syntax coloring
     call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php'})
-    " mighty plugin for php composer project: autocomplete, refactoring,
-    " managing use statements etc
-    " call dein#add('phpactor/phpactor', {
-    "             \ 'build' : 'composer install',
-    "             \ 'on_ft' : 'php',
-    "             \ })
+    " autocomplete
     call dein#add('lvht/phpcd.vim', {
                 \ 'on_ft' : 'php',
                 \ 'build' : 'composer install',
@@ -109,6 +104,7 @@ set nu
 set relativenumber
 set backspace=indent,eol,start
 set cursorline
+set termguicolors
 
 " fuzzy find
 set path+=**
@@ -160,7 +156,9 @@ set foldmethod=indent
 
 " colorscheme
 set background=dark
-colorscheme solarized
+colorscheme NeoSolarized
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
 " }}}
 
 " plugins config {{{
@@ -191,14 +189,17 @@ let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
 " neomake
 call neomake#configure#automake('w')
-
-" phpactor
-" autocmd FileType php setlocal omnifunc=phpactor#Complete
+" let g:neomake_javascript_jscs_maker = {
+"     \ 'exe': 'jscs',
+"     \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
+"     \ 'errorformat': '%f: line %l\, col %c\, %m',
+"     \ }
+" let g:neomake_javascript_enabled_makers = ['jscs']
 
 " phpcd
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#ignore_sources.php = ['omni']
- 
+
 " vim-php-namespace
 let g:php_namespace_sort_after_insert = 1
 
@@ -274,12 +275,8 @@ nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
 " php
-" autocmd FileType php nnoremap <silent> <leader>ld :call phpactor#GotoDefinition()<CR>
-" autocmd FileType php nnoremap <silent> <leader>lm :call phpactor#ContextMenu()<CR>
-" autocmd FileType php nnoremap <silent> <leader>la :call phpactor#UseAdd()<CR>
-" autocmd FileType php nnoremap <silent> <leader>lc :call phpactor#CopyFile()<CR>
 autocmd FileType php nnoremap <silent> <leader>ld <C-]>
-autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>
+autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>i
 
 " common
 nnoremap <silent> <leader>lt :TagbarToggle<CR>
