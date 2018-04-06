@@ -2,18 +2,18 @@
 
 # Marks:
 'b
-	/Users/xdefrag/bin/
+	/home/xdefrag/bin/
 	..
-1522702948
+1522741659
 'h
-	/Users/xdefrag/
+	/home/xdefrag/
 	..
-1522702948
+1522741659
 
 # Bookmarks:
 
 # TUI:
-al
+ar
 q0
 v2
 ov
@@ -97,6 +97,81 @@ d/home/xdefrag/dotfiles/vifm/colors
 d/home
 	..
 0
+d/
+	home
+4
+d/home
+	xdefrag
+1
+d/home/xdefrag
+	Downloads
+6
+d/home/xdefrag/Downloads
+	rjX7PIND1521814509.jpg
+29
+d/home/xdefrag
+	validate
+22
+d/home/xdefrag/validate
+	..
+0
+d/home/xdefrag
+	dotfiles
+16
+d/home/xdefrag/dotfiles
+	nvim
+4
+d/home/xdefrag/dotfiles/nvim
+	scripts
+1
+d/home/xdefrag/dotfiles/nvim/scripts
+	..
+0
+d/home/xdefrag/dotfiles/nvim
+	snippets
+2
+d/home/xdefrag/dotfiles/nvim/snippets
+	..
+0
+d/home/xdefrag/dotfiles/nvim
+	init.vim
+3
+d/home/xdefrag/dotfiles
+	nvim
+4
+d/home/xdefrag
+	dotfiles
+16
+d/home/xdefrag/dotfiles
+	nvim
+4
+d/home/xdefrag/dotfiles/nvim
+	init.vim
+3
+d/home/xdefrag/dotfiles
+	nvim
+4
+d/home/xdefrag
+	Code
+2
+d/home/xdefrag/Code
+	takelook
+29
+d/home/xdefrag/Code/takelook
+	api
+2
+d/home/xdefrag/Code/takelook/api
+	src
+1
+d/home/xdefrag/Code/takelook/api/src
+	tests
+10
+d/home/xdefrag/Code/takelook/api/src/tests
+	TestFiles
+3
+d/home/xdefrag/Code/takelook/api/src/tests/TestFiles
+	..
+0
 d
 
 # Right window history (oldest to newest):
@@ -104,21 +179,86 @@ D/home/xdefrag
 	faf
 24
 D/home
+	xdefrag
+1
+D/home/xdefrag
+	Code
+2
+D/home/xdefrag/Code
+	takelook
+29
+D/home/xdefrag/Code/takelook
+	api
+2
+D/home/xdefrag/Code/takelook/api
+	src
+1
+D/home/xdefrag/Code/takelook/api/src
+	tests
+10
+D/home/xdefrag/Code/takelook/api/src/tests
+	TestFiles
+3
+D/home/xdefrag/Code/takelook/api/src/tests/TestFiles
 	..
 0
+D/home/xdefrag/Code/takelook/api/src/tests
+	TestFiles
+3
+D/home/xdefrag/Code/takelook/api/src
+	storage
+9
+D/home/xdefrag/Code/takelook/api
+	src
+1
+D/home/xdefrag/Code/takelook
+	api
+2
+D/home/xdefrag/Code/takelook/api
+	src
+1
+D/home/xdefrag/Code/takelook
+	api
+2
+D/home/xdefrag/Code
+	..
+0
+D/home/xdefrag
+	Downloads
+6
+D/home/xdefrag/Downloads
+	rancher-compose
+11
+D/home/xdefrag
+	Downloads
+6
+D/home/xdefrag/Downloads
+	slack
+7
+D/home/xdefrag/Downloads/slack
+	..
+0
+D/home/xdefrag/Downloads
+	slack
+7
+D/home/xdefrag
+	Documents
+5
 D
 
 # Command line history (oldest to newest):
+:mkdir TestFiles
 :q
 
 # Search history (oldest to newest):
+/resul
 
 # Prompt history (oldest to newest):
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/xdefrag/.local/share/vifm/Trash/000_Default.vifm
+""/home/xdefrag/.local/share/vifm/Trash/000_dump.json
 
 # Directory stack (oldest to newest):
 
@@ -131,6 +271,8 @@ t/home/xdefrag/.local/share/vifm/Trash/000_README
 	/home/xdefrag/dotfiles/vifm/scripts/README
 t/home/xdefrag/.local/share/vifm/Trash/000_Default.vifm
 	/home/xdefrag/dotfiles/vifm/colors/Default.vifm
+t/home/xdefrag/.local/share/vifm/Trash/000_dump.json
+	/home/xdefrag/Code/takelook/api/src/tests/TestFiles/dump.json
 
 # State:
 f

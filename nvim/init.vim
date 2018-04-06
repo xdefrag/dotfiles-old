@@ -74,13 +74,27 @@ if dein#load_state('~/.cache/dein')
     call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft' : 'php' })
     " }}}
 
+    " js {{{
+    call dein#add('ternjs/tern_for_vim', {
+                \ 'on_ft' : 'js',
+                \ 'build' : 'npm i',
+                \ })
+    " }}}
+
     " autocomplete {{{
     " deoplete
     call dein#add('Shougo/deoplete.nvim', {
                 \ 'build' : ':UpdateRemotePlugins',
                 \ })
+    " python
+    call dein#add('zchee/deoplete-jedi')
+    " js
+    call dein#add('carlitux/deoplete-ternjs', {
+                \ 'build' : 'npm i -g tern',
+                \ })
     " emojis, yeah!
     call dein#add('fszymanski/deoplete-emoji')
+    " }}}
 
     " misc {{{
     " simplenote integration
@@ -105,6 +119,7 @@ let g:loaded_netrwPlugin = 1
 
 " nvim config {{{
 let mapleader="\<Space>"
+let $VIMDIR=expand('<sfile>:p:h')
 set ruler
 set hidden
 set noshowmode
@@ -156,10 +171,10 @@ set splitright
 set laststatus=2
 
 " fold
-set foldenable
-set foldlevelstart=1
-set foldnestmax=10
-set foldmethod=indent
+" set foldenable
+" set foldlevelstart=1
+" set foldnestmax=10
+" set foldmethod=indent
 
 " colorscheme
 set t_8f=^[[38;2;%lu;%lu;%lum
@@ -198,14 +213,32 @@ let g:neosnippet#disable_runtime_snippets = {
             \ }
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
-" neomake
+" neomake {{{
+" run on write
 call neomake#configure#automake('w')
+
+" maker settings 
 " let g:neomake_javascript_jscs_maker = {
 "     \ 'exe': 'jscs',
 "     \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
 "     \ 'errorformat': '%f: line %l\, col %c\, %m',
 "     \ }
 " let g:neomake_javascript_enabled_makers = ['jscs']
+
+" symbols
+let g:neomake_error_sign = {
+            \ 'text': 'E',
+            \ }
+let g:neomake_warning_sign = {
+            \ 'text': 'W',
+            \ }
+let g:neomake_info_sign = {
+            \ 'text': 'I',
+            \ }
+let g:neomake_message_sign = {
+            \ 'text': 'M',
+            \ }
+" }}}
 
 " phpcd
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
@@ -220,6 +253,10 @@ let g:fzf_command_prefix = 'Fzf'
 " vim-php-refactoring-toolbox
 let g:vim_php_refactoring_use_default_mapping = 0
 
+" ternjs deoplete
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+
 " vdebug
 let g:vdebug_options = {
             \ 'port' : 9001,
@@ -232,10 +269,15 @@ source ~/dotfiles/simplenoterc
 " }}}
 
 " helpers {{{
+" json format 
+function! JsonFormat()
+    :%! python $VIMDIR\/scripts\/json_format.py
+endfunction
+
 " ctags
 command! MakeTags !ctags -R .
 
-" 
+" php uses
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
@@ -259,7 +301,7 @@ nnoremap k gk
 inoremap jk <esc>
 nnoremap B ^
 nnoremap E $
-nnoremap <silent> <leader>o :oldfiles<CR>
+nnoremap <silent> <leader>o :browse oldfiles<CR>
 
 inoremap <esc> <nop>
 nnoremap $ <nop>
@@ -306,6 +348,7 @@ nnoremap <silent> <leader>fa :FzfAg<CR>
 nnoremap <silent> <leader>ft :FzfTags<CR>
 nnoremap <silent> <leader>fu :FzfSnippets<CR>
 nnoremap <silent> <leader>fc :FzfCommits<CR>
+nnoremap <silent> <leader>fh :FzfHistory<CR>
 
 " snippets
 imap <silent> <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -316,16 +359,20 @@ xmap <silent> <C-k> <Plug>(neosnippet_expand_target)
 nnoremap <silent> <leader>u :GundoToggle<CR>
 
 " simplenote
-nnoremap <silent> <leader>snl :SimplenoteList<CR>
-nnoremap <silent> <leader>sns :SimplenoteUpdate<CR>
-nnoremap <silent> <leader>snn :SimplenoteNew<CR>
-nnoremap <silent> <leader>snd :SimplenoteTrash<CR>
+" nnoremap <silent> <leader>snl :SimplenoteList<CR>
+" nnoremap <silent> <leader>sns :SimplenoteUpdate<CR>
+" nnoremap <silent> <leader>snn :SimplenoteNew<CR>
+" nnoremap <silent> <leader>snd :SimplenoteTrash<CR>
 
 " yankring
 nnoremap <silent> <leader>ys :YRShow<CR>
 
-" open config
+" json
+nnoremap <silent> <leader>j= :call JsonFormat()<CR>
+
+" vim config
 nnoremap <silent> <leader>vc :edit ~/dotfiles/nvim/init.vim<CR>
+nnoremap <silent> <leader>vr :so $MYVIMRC<CR>
 " }}}
 
 " restoring settings
