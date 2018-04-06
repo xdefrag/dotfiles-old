@@ -80,6 +80,11 @@ if dein#load_state('~/.cache/dein')
                 \ 'build' : 'npm i',
                 \ })
     " }}}
+    " go {{{
+    call dein#add('fatih/vim-go', {
+                \ 'on_ft' : 'go',
+                \ 'build' : ':GoUpdateBinaries' })
+    " }}}
 
     " autocomplete {{{
     " deoplete
@@ -92,6 +97,10 @@ if dein#load_state('~/.cache/dein')
     call dein#add('carlitux/deoplete-ternjs', {
                 \ 'build' : 'npm i -g tern',
                 \ })
+    " go
+    call dein#add('zchee/deoplete-go', { 
+                \ 'on_ft' : 'go',
+                \ 'build' : 'make' })
     " emojis, yeah!
     call dein#add('fszymanski/deoplete-emoji')
     " }}}
@@ -256,6 +265,11 @@ let g:vim_php_refactoring_use_default_mapping = 0
 " ternjs deoplete
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
+
+" go deoplete
+let g:deoplete#sources#go#gocode_binary = 'gocode'
+let g:deoplete#sources#go#package_dot = 1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " vdebug
 let g:vdebug_options = {
