@@ -23,17 +23,27 @@ if dein#load_state('~/.cache/dein')
     " filebrowser
     call dein#add('scrooloose/nerdtree')
     " advanced yanking
-    call dein#add('vim-scripts/YankRing.vim')
+    call dein#add('svermeulen/vim-easyclip')
+    " advanced selecting
+    call dein#add('gcmt/wildfire.vim')
     " fuzzy finder
     call dein#add('junegunn/fzf')
     call dein#add('junegunn/fzf.vim', {
                 \ 'build' : './install --all',
                 \ })
+    " easymotion
+    call dein#add('easymotion/vim-easymotion')
+    " incsearch
+    call dein#add('haya14busa/incsearch.vim')
+    call dein#add('haya14busa/incsearch-easymotion.vim')
+    call dein#add('haya14busa/incsearch-fuzzy.vim')
     " git
     call dein#add('tpope/vim-fugitive')
     call dein#add('mhinz/vim-signify')
     " undo history
     call dein#add('sjl/gundo.vim')
+    " . support for a bunch of plugins
+    call dein#add('tpope/vim-repeat')
     " simple status bar
     call dein#add('itchyny/lightline.vim')
     " advanced commenting
@@ -56,6 +66,9 @@ if dein#load_state('~/.cache/dein')
     call dein#add('Townk/vim-autoclose')
     " snippet manager
     call dein#add('Shougo/neosnippet.vim')
+    " editorconfig support
+    call dein#add('editorconfig/editorconfig-vim')
+    
     " }}}
 
     " php {{{
@@ -208,6 +221,20 @@ let g:lightline = {
 " startify
 let g:startify_change_to_vcs_root = 1
 
+" easyclip
+set clipboard=unnamed
+let g:EasyClipAutoFormat = 1
+let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
+let g:EasyClipShareYanks = 1
+let g:EasyClipUseSubstituteDefaults = 1
+
+" wildfire
+let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', 'ip', 'it']
+
+" easymotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
+
 " nerdtree
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
@@ -283,9 +310,26 @@ source ~/dotfiles/simplenoterc
 " }}}
 
 " helpers {{{
-" json format 
-function! JsonFormat()
-    :%! python $VIMDIR\/scripts\/json_format.py
+" easymotion + incsearch
+function! s:incsearch_config(...) abort
+  return incsearch#util#deepextend(deepcopy({
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {
+  \     "\<CR>": '<Over>(easymotion)'
+  \   },
+  \   'is_expr': 0
+  \ }), get(a:, 1, {}))
+endfunction
+
+" easymotion + incserach-fuzzy
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
 endfunction
 
 " ctags
@@ -345,6 +389,13 @@ nnoremap <silent> <Down> :resize -2<CR>
 nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
+" easymotion
+nmap f <Plug>(easymotion-overwin-f)
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
 " php
 autocmd FileType php nnoremap <silent> <leader>ld <C-]>
 autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>i
@@ -378,11 +429,10 @@ nnoremap <silent> <leader>u :GundoToggle<CR>
 " nnoremap <silent> <leader>snn :SimplenoteNew<CR>
 " nnoremap <silent> <leader>snd :SimplenoteTrash<CR>
 
-" yankring
-nnoremap <silent> <leader>ys :YRShow<CR>
+" easyclip
+nnoremap <silent> <leader>ys :Yanks<CR>
 
-" json
-nnoremap <silent> <leader>j= :call JsonFormat()<CR>
+" wildfire
 
 " vim config
 nnoremap <silent> <leader>vc :edit ~/dotfiles/nvim/init.vim<CR>
