@@ -396,6 +396,13 @@ noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
 noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
 noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
+" git fugitive
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gc :Gcommit<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+
 " php
 autocmd FileType php nnoremap <silent> <leader>ld <C-]>
 autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>i
