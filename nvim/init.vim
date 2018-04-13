@@ -68,6 +68,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('Shougo/neosnippet.vim')
     " editorconfig support
     call dein#add('editorconfig/editorconfig-vim')
+    " distraction free mode
+    call dein#add('junegunn/goyo.vim')
     
     " }}}
 
@@ -145,8 +147,8 @@ let $VIMDIR=expand('<sfile>:p:h')
 set ruler
 set hidden
 set noshowmode
-set nu
-set relativenumber
+" set nu
+" set relativenumber
 set backspace=indent,eol,start
 set cursorline
 
@@ -234,6 +236,11 @@ let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', 'ip', 'it']
 " easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
+
+" goyo
+let g:goyo_width = 120
+let g:goyo_height = '100%'
+let g:goyo_linenr = 0
 
 " nerdtree
 let g:NERDTreeDirArrowExpandable = '+'
@@ -388,6 +395,9 @@ nnoremap <silent> <Up> :resize +2<CR>
 nnoremap <silent> <Down> :resize -2<CR>
 nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
+
+" goyo
+nnoremap <silent> <leader>df :Goyo<CR>
 
 " easymotion
 nmap f <Plug>(easymotion-overwin-f)
