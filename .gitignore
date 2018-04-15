@@ -1,5 +1,7 @@
-simplenoterc
 fish/fishd*
 newsboat/cache.db
 newsboat/history.cmdline
 newsboat/history.search
+simplenoterc
+vifm/vifm-help.txt
+vifm/vifminfo
