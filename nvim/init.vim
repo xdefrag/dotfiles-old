@@ -70,7 +70,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('editorconfig/editorconfig-vim')
     " distraction free mode
     call dein#add('junegunn/goyo.vim')
-    
+
     " }}}
 
     " php {{{
@@ -121,8 +121,6 @@ if dein#load_state('~/.cache/dein')
     " }}}
 
     " misc {{{
-    " simplenote integration
-    call dein#add('mrtazz/simplenote.vim')
     " }}}
 
     call dein#end()
@@ -147,8 +145,6 @@ let $VIMDIR=expand('<sfile>:p:h')
 set ruler
 set hidden
 set noshowmode
-" set nu
-" set relativenumber
 set backspace=indent,eol,start
 set cursorline
 
@@ -185,6 +181,7 @@ set tabstop=4
 " indent
 set autoindent
 set smartindent
+set copyindent
 set cindent
 
 " splits
@@ -195,10 +192,10 @@ set splitright
 set laststatus=2
 
 " fold
-" set foldenable
-" set foldlevelstart=1
-" set foldnestmax=10
-" set foldmethod=indent
+set foldenable
+set foldlevelstart=1
+set foldnestmax=10
+set foldmethod=indent
 
 " colorscheme
 set t_8f=^[[38;2;%lu;%lu;%lum
@@ -215,8 +212,14 @@ colorscheme NeoSolarized
 " lightline
 let g:lightline = {
             \ 'colorscheme' : 'solarized',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'readonly', 'filename', 'modified', 'gitbranch' ] ],
+            \   'right': [ [ 'lineinfo' ],
+            \              [ 'percent' ] ]
+            \ },
             \ 'component_function' : {
-            \ 'gitbranch' : 'fugitive#head',
+            \   'gitbranch' : 'fugitive#head',
             \ }
             \ }
 
@@ -309,34 +312,29 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:vdebug_options = {
             \ 'port' : 9001,
             \ }
-
-" simplenote
-" g:SimplenoteUsername, g:SimplenotePassword
-source ~/dotfiles/simplenoterc
-
 " }}}
 
 " helpers {{{
 " easymotion + incsearch
 function! s:incsearch_config(...) abort
-  return incsearch#util#deepextend(deepcopy({
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {
-  \     "\<CR>": '<Over>(easymotion)'
-  \   },
-  \   'is_expr': 0
-  \ }), get(a:, 1, {}))
+    return incsearch#util#deepextend(deepcopy({
+                \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+                \   'keymap': {
+                \     "\<CR>": '<Over>(easymotion)'
+                \   },
+                \   'is_expr': 0
+                \ }), get(a:, 1, {}))
 endfunction
 
 " easymotion + incserach-fuzzy
 function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzyword#converter()],
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
+    return extend(copy({
+                \   'converters': [incsearch#config#fuzzyword#converter()],
+                \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+                \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+                \   'is_expr': 0,
+                \   'is_stay': 1
+                \ }), get(a:, 1, {}))
 endfunction
 
 " ctags
@@ -414,7 +412,6 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 
 " php
-autocmd FileType php nnoremap <silent> <leader>ld <C-]>
 autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>i
 
 " common
@@ -440,19 +437,13 @@ xmap <silent> <C-k> <Plug>(neosnippet_expand_target)
 " gundo
 nnoremap <silent> <leader>u :GundoToggle<CR>
 
-" simplenote
-" nnoremap <silent> <leader>snl :SimplenoteList<CR>
-" nnoremap <silent> <leader>sns :SimplenoteUpdate<CR>
-" nnoremap <silent> <leader>snn :SimplenoteNew<CR>
-" nnoremap <silent> <leader>snd :SimplenoteTrash<CR>
-
 " easyclip
 nnoremap <silent> <leader>ys :Yanks<CR>
 
 " wildfire
 
 " vim config
-nnoremap <silent> <leader>vc :edit ~/dotfiles/nvim/init.vim<CR>
+nnoremap <silent> <leader>vc :e $MYVIMRC<CR>
 nnoremap <silent> <leader>vr :so $MYVIMRC<CR>
 " }}}
 

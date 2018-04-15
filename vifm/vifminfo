@@ -2,18 +2,18 @@
 
 # Marks:
 'b
-	/home/xdefrag/bin/
+	/Users/xdefrag/bin/
 	..
-1522741659
+1523802059
 'h
-	/home/xdefrag/
+	/Users/xdefrag/
 	..
-1522741659
+1523802059
 
 # Bookmarks:
 
 # TUI:
-ar
+al
 q0
 v2
 ov
@@ -172,6 +172,27 @@ d/home/xdefrag/Code/takelook/api/src/tests
 d/home/xdefrag/Code/takelook/api/src/tests/TestFiles
 	..
 0
+d/home
+	..
+0
+d/
+	Users
+4
+d/Users
+	xdefrag
+3
+d/Users/xdefrag
+	Pictures
+9
+d/Users/xdefrag/Pictures
+	Wallpapers
+2
+d/Users/xdefrag/Pictures/Wallpapers
+	NGE
+1
+d/Users/xdefrag/Pictures/Wallpapers/NGE
+	..
+0
 d
 
 # Right window history (oldest to newest):
@@ -292,21 +313,50 @@ D/home/xdefrag/Code/takelook/api/src/app
 D/home/xdefrag/Code/takelook/api/src/app/Services
 	TntBusynessService.php
 17
+D/home
+	..
+0
+D/
+	home
+10
+D/home
+	..
+0
+D/
+	Users
+4
+D/Users
+	xdefrag
+3
+D/Users/xdefrag
+	xdefrag
+17
+D/Users/xdefrag/xdefrag
+	..
+0
+D/Users/xdefrag
+	Downloads
+4
+D/Users/xdefrag/Downloads
+	15218810370700.webm
+4
 D
 
 # Command line history (oldest to newest):
 :mkdir TestFiles
+:mkdir Wallpapers
+:mkdir NGE
 :q
 
 # Search history (oldest to newest):
 /resul
 
 # Prompt history (oldest to newest):
+pIMG_0041.JPG
 
 # Local filter history (oldest to newest):
 
 # Registers:
-""/home/xdefrag/.local/share/vifm/Trash/000_dump.json
 
 # Directory stack (oldest to newest):
 
