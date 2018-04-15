@@ -70,7 +70,15 @@ if dein#load_state('~/.cache/dein')
     call dein#add('editorconfig/editorconfig-vim')
     " distraction free mode
     call dein#add('junegunn/goyo.vim')
+    " }}}
 
+    " markdown {{{
+    call dein#add('godlygeek/tabular')
+    call dein#add('plasticboy/vim-markdown')
+    " }}}
+
+    " json {{{
+    call dein#add('elzr/vim-json', { 'on_ft' : 'json'})
     " }}}
 
     " php {{{
@@ -293,11 +301,24 @@ let g:deoplete#ignore_sources.php = ['omni']
 " vim-php-namespace
 let g:php_namespace_sort_after_insert = 1
 
-" fzf
-let g:fzf_command_prefix = 'Fzf'
-
 " vim-php-refactoring-toolbox
 let g:vim_php_refactoring_use_default_mapping = 0
+
+" markdown
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_new_list_item_indent = 2
+let g:vim_markdown_no_extensions_in_markdown = 1
+let g:vim_markdown_autowrite = 1
+
+
+" fzf
+let g:fzf_command_prefix = 'Fzf'
 
 " ternjs deoplete
 let g:tern#command = ["tern"]

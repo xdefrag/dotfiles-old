@@ -1,2 +1,5 @@
 simplenoterc
 fish/fishd*
+newsboat/cache.db
+newsboat/history.cmdline
+newsboat/history.search
