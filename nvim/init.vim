@@ -70,6 +70,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('editorconfig/editorconfig-vim')
     " distraction free mode
     call dein#add('junegunn/goyo.vim')
+    " autotag
+    call dein#add('craigemery/vim-autotag')
     " }}}
 
     " markdown {{{
@@ -91,10 +93,10 @@ if dein#load_state('~/.cache/dein')
                 \ })
     " indenting and correcting simple errors on save
     call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php'})
-    " advanced managing php use statements
-    call dein#add('arnaud-lb/vim-php-namespace', { 'on_ft' : 'php' })
     " advanced refactoring tools
     call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft' : 'php' })
+    " php use
+    call dein#add('arnaud-lb/vim-php-namespace', { 'on_ft' : 'php' })
     " }}}
 
     " js {{{
@@ -268,8 +270,9 @@ let g:neosnippet#disable_runtime_snippets = {
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
 " neomake {{{
-" run on write
-call neomake#configure#automake('w')
+call neomake#configure#automake('nrwi', 500)
+let g:neomake_highlight_lines = 1
+"let g:neomake_open_list = 2
 
 " maker settings 
 " let g:neomake_javascript_jscs_maker = {
@@ -358,13 +361,15 @@ function! s:config_easyfuzzymotion(...) abort
                 \ }), get(a:, 1, {}))
 endfunction
 
-" ctags
-command! MakeTags !ctags -R .
-
-" php uses
+" php use
 function! IPhpInsertUse()
     call PhpInsertUse()
     call feedkeys('a',  'n')
+endfunction
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
 endfunction
 
 " tmux cursor fix
@@ -425,6 +430,9 @@ noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
 noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
 noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
+" neosnippet
+nnoremap <silent> <leader>ne :NeoSnippetEdit -split<CR>
+
 " git fugitive
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -433,7 +441,10 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 
 " php
-autocmd FileType php inoremap <silent> <C-u> <ESC>:call IPhpInsertUse()<CR>i
+autocmd FileType php inoremap <Leader>lu <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>lu :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <Leader>le <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>le :call PhpExpandClass()<CR>
 
 " common
 nnoremap <silent> <leader>lt :TagbarToggle<CR>
