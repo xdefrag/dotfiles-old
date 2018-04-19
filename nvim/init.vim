@@ -26,6 +26,10 @@ if dein#load_state('~/.cache/dein')
     call dein#add('svermeulen/vim-easyclip')
     " advanced selecting
     call dein#add('gcmt/wildfire.vim')
+    " buff tabs
+    call dein#add('ap/vim-buftabline')
+    " buff kill
+    call dein#add('qpkorr/vim-bufkill')
     " fuzzy finder
     call dein#add('junegunn/fzf')
     call dein#add('junegunn/fzf.vim', {
@@ -38,7 +42,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('haya14busa/incsearch-easymotion.vim')
     call dein#add('haya14busa/incsearch-fuzzy.vim')
     " git
-    call dein#add('tpope/vim-fugitive')
     call dein#add('mhinz/vim-signify')
     " undo history
     call dein#add('sjl/gundo.vim')
@@ -68,8 +71,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('Shougo/neosnippet.vim')
     " editorconfig support
     call dein#add('editorconfig/editorconfig-vim')
-    " distraction free mode
-    call dein#add('junegunn/goyo.vim')
     " autotag
     call dein#add('craigemery/vim-autotag')
     " }}}
@@ -144,7 +145,7 @@ endif
 " }}}
 
 " netrw {{{
-" disabling netrw in favor of nerdtree
+" disabling netrw
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 " }}}
@@ -157,6 +158,7 @@ set hidden
 set noshowmode
 set backspace=indent,eol,start
 set cursorline
+set signcolumn=yes
 
 " fuzzy find
 set path+=**
@@ -228,9 +230,6 @@ let g:lightline = {
             \   'right': [ [ 'lineinfo' ],
             \              [ 'percent' ] ]
             \ },
-            \ 'component_function' : {
-            \   'gitbranch' : 'fugitive#head',
-            \ }
             \ }
 
 " startify
@@ -250,15 +249,15 @@ let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', 'ip', 'it']
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 
-" goyo
-let g:goyo_width = 120
-let g:goyo_height = '100%'
-let g:goyo_linenr = 0
-
 " nerdtree
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeMapActivateNode = 'l'
+
+" signify
+let g:signify_realtime = 1
+let g:signify_sign_show_test = 0
+let g:signify_vcs_list = [ 'git' ]
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
@@ -270,7 +269,7 @@ let g:neosnippet#disable_runtime_snippets = {
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
 " neomake {{{
-call neomake#configure#automake('nrwi', 500)
+call neomake#configure#automake('nrwi')
 let g:neomake_highlight_lines = 1
 "let g:neomake_open_list = 2
 
@@ -281,6 +280,7 @@ let g:neomake_highlight_lines = 1
 "     \ 'errorformat': '%f: line %l\, col %c\, %m',
 "     \ }
 " let g:neomake_javascript_enabled_makers = ['jscs']
+let g:neomake_php_enabled_makers = ['phpstan']
 
 " symbols
 let g:neomake_error_sign = {
@@ -400,11 +400,10 @@ nnoremap ^ <nop>
 nnoremap <leader>n :NERDTreeToggle<CR>
 
 " buffers
-nnoremap <silent> q :bdelete<CR>
+nnoremap <silent> q :BD<CR>
+nnoremap <silent> <S-q> :bd<CR>
 nnoremap <silent> <Tab> <C-w>w 
-nnoremap <silent> <S-Tab> <C-w>W
-nnoremap <silent> <leader>bp :bprev<CR>
-nnoremap <silent> <leader>bn :bnext<CR>
+nnoremap <silent> <S-Tab> :bnext<CR>
 
 " split
 nnoremap <silent> <leader>sj <C-W><C-J>
@@ -420,9 +419,6 @@ nnoremap <silent> <Down> :resize -2<CR>
 nnoremap <silent> <Left> :vertical resize +2<CR>
 nnoremap <silent> <Right> :vertical resize -2<CR>
 
-" goyo
-nnoremap <silent> <leader>df :Goyo<CR>
-
 " easymotion
 nmap f <Plug>(easymotion-overwin-f)
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
@@ -432,13 +428,6 @@ noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
 " neosnippet
 nnoremap <silent> <leader>ne :NeoSnippetEdit -split<CR>
-
-" git fugitive
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
 
 " php
 autocmd FileType php inoremap <Leader>lu <Esc>:call IPhpInsertUse()<CR>
