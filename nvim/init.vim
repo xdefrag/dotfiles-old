@@ -43,6 +43,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('haya14busa/incsearch-fuzzy.vim')
     " git
     call dein#add('mhinz/vim-signify')
+    call dein#add('tpope/vim-fugitive')
     " undo history
     call dein#add('sjl/gundo.vim')
     " . support for a bunch of plugins
@@ -430,10 +431,8 @@ noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 nnoremap <silent> <leader>ne :NeoSnippetEdit -split<CR>
 
 " php
-autocmd FileType php inoremap <Leader>lu <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>lu :call PhpInsertUse()<CR>
-autocmd FileType php inoremap <Leader>le <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>le :call PhpExpandClass()<CR>
+autocmd FileType php inoremap <C-u> <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php inoremap <C-e> <Esc>:call IPhpExpandClass()<CR>
 
 " common
 nnoremap <silent> <leader>lt :TagbarToggle<CR>
