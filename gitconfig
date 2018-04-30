@@ -18,5 +18,3 @@
 [user]
     name = Stanislaw Mnizhek
     mail = me@stanislawmnizhek.ru
-[mergetool]
-	path = nvim
