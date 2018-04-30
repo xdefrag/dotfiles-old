@@ -1,5 +1,4 @@
 # startup
-set fish_greeting ""
 fish_default_key_bindings
 
 if test -z $TMUX
@@ -8,46 +7,50 @@ end
 
 # environment variables
 set -gx MANPAGER "col -b | nvim -MR - "
+set -gx SHELL (which fish)
 set -U EDITOR nvim
 set -U VISUAL nvim
 set -U fisher_copy true
 
+# the fuck
+thefuck --alias | source
+
 # completion
 if test -e ~/.config/fish/completions
-  source ~/.config/fish/completions/*
+    source ~/.config/fish/completions/*
 end
 
 if not test -e ~/.local/share/fish/generated_completions
-  fish_update_completions
+    fish_update_completions
 end
 
 # phpbrew
 if test -e ~/.phpbrew
-  source ~/.phpbrew/phpbrew.fish
+    source ~/.phpbrew/phpbrew.fish
 end
 
 # go
 if test -e ~/go
-  set -gx GOPATH ~/go
-  set -gx PATH ~/go/bin $PATH
+    set -gx GOPATH ~/go
+    set -gx PATH ~/go/bin $PATH
 end
 
 # composer 
 if test -e ~/.composer
-  set -gx PATH ~/.composer/vendor/bin $PATH
+    set -gx PATH ~/.composer/vendor/bin $PATH
 end
 
 if test -e ~/.config/composer
-  set -gx PATH ~/.config/composer/vendor/bin $PATH
+    set -gx PATH ~/.config/composer/vendor/bin $PATH
 end
 
 # osx python' bin
 if test -e ~/Library/Python/2.7/bin
-  set -gx PATH ~/Library/Python/2.7/bin $PATH
+    set -gx PATH ~/Library/Python/2.7/bin $PATH
 end
 
 if test -e ~/Library/Python/3.6/bin
-  set -gx PATH ~/Library/Python/3.6/bin $PATH
+    set -gx PATH ~/Library/Python/3.6/bin $PATH
 end
 
 # common
@@ -56,6 +59,12 @@ abbr ll "ls -la"
 abbr c cd
 abbr m mkdir
 abbr r "rm -rf"
+
+# dirs
+abbr . "cd .."
+abbr .. "cd ../.."
+abbr ... "cd ../../.."
+abbr .... "cd ../../../.."
 
 # git
 abbr gs "git status"
@@ -76,6 +85,8 @@ abbr dcp "docker-compose ps"
 abbr dcs "docker-compose stop"
 
 # apps
+abbr cask "brew cask"
+abbr ag "ag --follow --hidden"
 abbr vim nvim
 abbr vi nvim
 abbr v nvim

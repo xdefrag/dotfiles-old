@@ -83,10 +83,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('elzr/vim-json', { 'on_ft' : 'json'})
     " }}}
 
-    " fish {{{
-    call dein#add('dag/vim-fish', { 'on_ft' : 'fish' })
-    " }}}
-
     " php {{{
     " better syntax coloring
     call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php'})
@@ -237,6 +233,13 @@ let g:lightline = {
 
 " startify
 let g:startify_change_to_vcs_root = 1
+let g:startify_custom_header = ['']
+let g:startify_change_to_vcs_root = 1
+let g:startify_bookmarks = [
+            \ '~/.config/nvim/init.vim',
+            \ '~/.config/vifm/vifmrc',
+            \ '~/.config/fish/config.fish',
+            \ ]
 
 " easyclip
 set clipboard=unnamed
@@ -277,6 +280,7 @@ let g:neomake_highlight_lines = 1
 let g:neomake_open_list = 2
 
 let g:neomake_php_enabled_makers = ['phpstan']
+let g:neomake_fish_enabled_makers = []
 
 " symbols
 let g:neomake_error_sign = {
