@@ -83,6 +83,10 @@ if dein#load_state('~/.cache/dein')
     call dein#add('elzr/vim-json', { 'on_ft' : 'json'})
     " }}}
 
+    " fish {{{
+    call dein#add('dag/vim-fish', { 'on_ft' : 'fish' })
+    " }}}
+
     " php {{{
     " better syntax coloring
     call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php'})
