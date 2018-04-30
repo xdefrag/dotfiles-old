@@ -1,3 +1,0 @@
-layout tall
-cd ~
-launch tmux attach || exec tmux new-session

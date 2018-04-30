@@ -63,8 +63,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('majutsushi/tagbar')
     " debugger
     call dein#add('joonty/vdebug')
-    " project individual config
-    call dein#add('amiorin/vim-project')
     " autoclosing pair symbols
     call dein#add('Townk/vim-autoclose')
     " snippet manager
@@ -271,15 +269,8 @@ let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 " neomake {{{
 call neomake#configure#automake('nrwi')
 let g:neomake_highlight_lines = 1
-"let g:neomake_open_list = 2
+let g:neomake_open_list = 2
 
-" maker settings 
-" let g:neomake_javascript_jscs_maker = {
-"     \ 'exe': 'jscs',
-"     \ 'args': ['--no-color', '--preset', 'airbnb', '--reporter', 'inline', '--esnext'],
-"     \ 'errorformat': '%f: line %l\, col %c\, %m',
-"     \ }
-" let g:neomake_javascript_enabled_makers = ['jscs']
 let g:neomake_php_enabled_makers = ['phpstan']
 
 " symbols
@@ -319,6 +310,38 @@ let g:vim_markdown_new_list_item_indent = 2
 let g:vim_markdown_no_extensions_in_markdown = 1
 let g:vim_markdown_autowrite = 1
 
+" vdebug
+let g:vdebug_options= {
+            \    "port" : 9001,
+            \    "server" : '',
+            \    "timeout" : 20,
+            \    "on_close" : 'detach',
+            \    "break_on_open" : 1,
+            \    "ide_key" : '',
+            \    "path_maps" : { 
+            \    "/var/www/api-data" : "/Users/xdefrag/Code/takelook/api/src",
+            \    },
+            \    "debug_window_level" : 0,
+            \    "debug_file_level" : 0,
+            \    "debug_file" : "",
+            \    "watch_window_style" : 'expanded',
+            \    "marker_default" : '=',
+            \    "marker_closed_tree" : '+',
+            \    "marker_open_tree" : '-'
+            \ }
+let g:vdebug_keymap = {
+            \    "run" : "<leader>dr",
+            \    "run_to_cursor" : "<leader>dt",
+            \    "step_over" : "<leader>do",
+            \    "step_into" : "<leader>di",
+            \    "step_out" : "<leader>du",
+            \    "close" : "<leader>dc",
+            \    "detach" : "<leader>dd",
+            \    "set_breakpoint" : "<leader>db",
+            \    "get_context" : "<leader>dg",
+            \    "eval_under_cursor" : "<leader>d",
+            \    "eval_visual" : "<leader>de",
+            \ }
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
@@ -461,11 +484,12 @@ nnoremap <silent> <leader>u :GundoToggle<CR>
 " easyclip
 nnoremap <silent> <leader>ys :Yanks<CR>
 
-" wildfire
-
 " vim config
 nnoremap <silent> <leader>vc :e $MYVIMRC<CR>
 nnoremap <silent> <leader>vr :so $MYVIMRC<CR>
+
+" debug
+
 " }}}
 
 " restoring settings
