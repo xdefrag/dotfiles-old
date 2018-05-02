@@ -112,3 +112,11 @@ alias int
     {
 
     }
+snippet criteria
+alias crit
+    use Devjs\EloquentResources\Repositories\Criterias\CriteriaInterface;
+    use Illuminate\Database\Eloquent\Builder;
+
+    class ${0:`expand('%:t:r')`} implements CriteriaInterface
+    {
+    }

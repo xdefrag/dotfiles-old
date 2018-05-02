@@ -77,12 +77,15 @@ abbr gss "git stash"
 abbr gsa "git stash apply"
 abbr gb "git branch"
 abbr grh "git reset --hard"
+abbr pull "git pull"
+abbr push "git push"
 
 # docker-compose
 abbr dcu "docker-compose up -d"
 abbr dcd "docker-compose down"
 abbr dcp "docker-compose ps"
 abbr dcs "docker-compose stop"
+abbr dcl "docker-compose logs -f "
 
 # apps
 abbr cask "brew cask"
