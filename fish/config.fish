@@ -14,6 +14,7 @@ set -U fisher_copy true
 
 # the fuck
 thefuck --alias | source
+alias fish_key_reader /usr/local/bin/fish_key_reader
 
 # completion
 if test -e ~/.config/fish/completions
