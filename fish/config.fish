@@ -17,6 +17,10 @@ thefuck --alias | source
 alias fish_key_reader /usr/local/bin/fish_key_reader
 
 # completion
+if test -e /usr/share/fish/completions
+    source /usr/share/fish/completions/*
+end
+
 if test -e ~/.config/fish/completions
     source ~/.config/fish/completions/*
 end
