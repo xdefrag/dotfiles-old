@@ -113,7 +113,9 @@ if dein#load_state('~/.cache/dein')
     " }}}
 
     " lua {{{
-    call dein#add('tbastos/vim-lua', { 'on_ft' : 'lua' })
+    " call dein#add('tbastos/vim-lua', { 'on_ft' : 'lua' })
+    call dein#add('xolox/vim-misc', { 'on_ft' : 'lua' })
+    call dein#add('xolox/vim-lua-ftplugin', { 'on_ft' : 'lua' })
     " }}}
 
     " autocomplete {{{
@@ -272,6 +274,9 @@ let g:signify_vcs_list = [ 'git' ]
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
+let g:deoplete#ignore_sources.lua = ['omni']
 
 " neosnippet
 let g:neosnippet#disable_runtime_snippets = {
@@ -301,10 +306,6 @@ let g:neomake_message_sign = {
             \ 'text': 'M',
             \ }
 " }}}
-
-" phpcd
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
 
 " vim-php-namespace
 let g:php_namespace_sort_after_insert = 1
