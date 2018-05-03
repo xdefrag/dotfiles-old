@@ -16,6 +16,9 @@ set -U fisher_copy true
 thefuck --alias | source
 alias fish_key_reader /usr/local/bin/fish_key_reader
 
+# cheat.sh
+curl cheat.sh/:fish | source
+
 # completion
 if test -e /usr/share/fish/completions
     source /usr/share/fish/completions/*
@@ -90,7 +93,8 @@ abbr dcu "docker-compose up -d"
 abbr dcd "docker-compose down"
 abbr dcp "docker-compose ps"
 abbr dcs "docker-compose stop"
-abbr dcl "docker-compose logs -f "
+abbr dcl "docker-compose logs -f"
+abbr dce "docker-compose exec"
 
 # apps
 abbr cask "brew cask"

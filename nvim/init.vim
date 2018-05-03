@@ -80,19 +80,19 @@ if dein#load_state('~/.cache/dein')
     " }}}
 
     " json {{{
-    call dein#add('elzr/vim-json', { 'on_ft' : 'json'})
+    call dein#add('elzr/vim-json', { 'on_ft' : 'json' })
     " }}}
 
     " php {{{
     " better syntax coloring
-    call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php'})
+    call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php' })
     " autocomplete
     call dein#add('lvht/phpcd.vim', {
                 \ 'on_ft' : 'php',
                 \ 'build' : 'composer install',
                 \ })
     " indenting and correcting simple errors on save
-    call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php'})
+    call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php' })
     " advanced refactoring tools
     call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft' : 'php' })
     " php use
@@ -105,10 +105,15 @@ if dein#load_state('~/.cache/dein')
                 \ 'build' : 'npm i',
                 \ })
     " }}}
+
     " go {{{
     call dein#add('fatih/vim-go', {
                 \ 'on_ft' : 'go',
                 \ 'build' : ':GoUpdateBinaries' })
+    " }}}
+
+    " lua {{{
+    call dein#add('tbastos/vim-lua', { 'on_ft' : 'lua' })
     " }}}
 
     " autocomplete {{{
