@@ -95,6 +95,7 @@ abbr dcp "docker-compose ps"
 abbr dcs "docker-compose stop"
 abbr dcl "docker-compose logs -f"
 abbr dce "docker-compose exec"
+abbr dcr "docker-compose restart"
 
 # apps
 abbr cask "brew cask"
