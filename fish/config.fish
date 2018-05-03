@@ -17,7 +17,7 @@ thefuck --alias | source
 alias fish_key_reader /usr/local/bin/fish_key_reader
 
 # cheat.sh
-curl cheat.sh/:fish | source
+curl -s cheat.sh/:fish | source
 
 # completion
 if test -e /usr/share/fish/completions
