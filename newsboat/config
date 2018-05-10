@@ -31,6 +31,10 @@ bind-key j down article
 bind-key k up article
 bind-key J next article
 bind-key K prev article
+bind-key l open
+bind-key o open-in-browser
+bind-key h quit
+bind-key q hard-quit
 # }}}
 
 # filters {{{
