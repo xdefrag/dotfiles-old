@@ -1,0 +1,28 @@
+snippet table
+alias t
+    local ${0:`expand('%:t:r')`} = {}
+
+    return $0
+snippet test
+alias tt
+    local tap = require('tap')
+
+    function ${0:`expand('%:t:r')`}:run()
+        local taptest = tap.test('$0')
+
+        taptest:plan(1)
+        taptest:diag('$0 run')
+
+        taptest:ok(true, 'True is true')
+
+        taptest:check()
+    end
+snippet arvo_schema
+alias arvo
+    {
+        type = 'record',
+        name = '${0}',
+        fields = {
+            { name = "", type = "", default = "" }
+        }
+    }

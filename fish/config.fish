@@ -62,8 +62,8 @@ if test -e ~/Library/Python/3.6/bin
 end
 
 # common
-abbr l "ls -a"
-abbr ll "ls -la"
+abbr l "ls"
+abbr ll "ls -l"
 abbr c cd
 abbr m mkdir
 abbr r "rm -rf"
@@ -96,6 +96,7 @@ abbr dcs "docker-compose stop"
 abbr dcl "docker-compose logs -f"
 abbr dce "docker-compose exec"
 abbr dcr "docker-compose restart"
+abbr dcb "docker-compose build"
 
 # apps
 abbr cask "brew cask"
