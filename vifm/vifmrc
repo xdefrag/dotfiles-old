@@ -32,14 +32,14 @@ filetype *.ogg,*.aiff,*.wav,*.mp3 mpv %c
 filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
            \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
            \*.as[fx]
-           \ mpv %c
+           \ mpv --autofit 1024x768 %c
 
 " Web
 fileviewer *.html,*.htm w3m -dump -T text/html
 
 " Image
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ img2txt %c
+        \ mpv --pause --autofit 1024x768 %c
 
 " Extract zip files
 filetype *.zip unzip %f
@@ -67,6 +67,7 @@ vnoremap w :view<cr>gv
 
 " Open file in new MacVim tab
 nnoremap o :!nvim  %f<cr>
+
 " Open file in new MacVim window
 nnoremap O :!nvim %f<cr>
 

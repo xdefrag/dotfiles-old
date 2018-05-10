@@ -19,6 +19,9 @@ alias fish_key_reader /usr/local/bin/fish_key_reader
 # cheat.sh
 curl -s cheat.sh/:fish | source
 
+# autojump
+[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+
 # completion
 if test -e /usr/share/fish/completions
     source /usr/share/fish/completions/*
