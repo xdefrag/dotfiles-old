@@ -20,6 +20,8 @@ reload-time 20
 show-keymap-hint false 
 show-read-articles no
 show-read-feeds no
+bookmark-autopilot yes
+bookmark-cmd "open -t https://getpocket.com/edit?url=%u"
 # }}}
 
 # bindings {{{
@@ -35,6 +37,7 @@ bind-key l open
 bind-key o open-in-browser
 bind-key h quit
 bind-key q hard-quit
+bind-key b bookmark
 # }}}
 
 # filters {{{
