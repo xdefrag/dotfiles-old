@@ -1,8 +1,12 @@
 # general {{{
 set $mod Mod4
-font pango:Iosevka Nerd Font Complete Mono 16
+font pango:Iosevka Term 18
 floating_modifier $mod
 new_window 1pixel
+# }}}
+
+# windows {{{
+for_window [class="mpv"] floating enable
 # }}}
 
 # bindings {{{

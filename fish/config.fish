@@ -20,49 +20,30 @@ alias fish_key_reader /usr/local/bin/fish_key_reader
 curl -s cheat.sh/:fish | source
 
 # autojump
-[ -f /usr/local/share/autojump/autojump.fish ]; and source /usr/local/share/autojump/autojump.fish
+test -e /usr/local/share/autojump/autojump.fish; and source /usr/local/share/autojump/autojump.fish
 
 # completion
-if test -e /usr/share/fish/completions
-    source /usr/share/fish/completions/*
-end
+test -e /usr/share/fish/completions; and source /usr/share/fish/completions/*
 
-if test -e ~/.config/fish/completions
-    source ~/.config/fish/completions/*
-end
+test -e ~/.config/fish/completions; and source ~/.config/fish/completions/*
 
-if not test -e ~/.local/share/fish/generated_completions
-    fish_update_completions
-end
+not test -e ~/.local/share/fish/generated_completions; and fish_update_completions
 
 # phpbrew
-if test -e ~/.phpbrew
-    source ~/.phpbrew/phpbrew.fish
-end
+test -e ~/.phpbrew; and source ~/.phpbrew/phpbrew.fish
 
 # go
-if test -e ~/go
-    set -gx GOPATH ~/go
-    set -gx PATH ~/go/bin $PATH
-end
+test -e ~/go; and set -gx GOPATH ~/go; set -gx PATH ~/go/bin $PATH
 
 # composer 
-if test -e ~/.composer
-    set -gx PATH ~/.composer/vendor/bin $PATH
-end
+test -e ~/.composer; and set -gx PATH ~/.composer/vendor/bin $PATH
 
-if test -e ~/.config/composer
-    set -gx PATH ~/.config/composer/vendor/bin $PATH
-end
+test -e ~/.config/composer; and set -gx PATH ~/.config/composer/vendor/bin $PATH
 
 # osx python' bin
-if test -e ~/Library/Python/2.7/bin
-    set -gx PATH ~/Library/Python/2.7/bin $PATH
-end
+test -e ~/Library/Python/2.7/bin; and set -gx PATH ~/Library/Python/2.7/bin $PATH
 
-if test -e ~/Library/Python/3.6/bin
-    set -gx PATH ~/Library/Python/3.6/bin $PATH
-end
+test -e ~/Library/Python/3.6/bin; and set -gx PATH ~/Library/Python/3.6/bin $PATH
 
 # common
 abbr l "ls"
