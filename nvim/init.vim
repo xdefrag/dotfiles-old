@@ -24,12 +24,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('scrooloose/nerdtree')
     " advanced yanking
     call dein#add('svermeulen/vim-easyclip')
-    " advanced selecting
-    call dein#add('gcmt/wildfire.vim')
     " buff tabs
     call dein#add('ap/vim-buftabline')
-    " buff kill
-    call dein#add('qpkorr/vim-bufkill')
     " fuzzy finder
     call dein#add('junegunn/fzf')
     call dein#add('junegunn/fzf.vim', {
@@ -220,6 +216,7 @@ set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_Co=256
 set background=dark
+
 " lightline fix
 colorscheme solarized
 colorscheme NeoSolarized
@@ -254,9 +251,6 @@ let g:EasyClipAutoFormat = 1
 let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 let g:EasyClipShareYanks = 1
 let g:EasyClipUseSubstituteDefaults = 1
-
-" wildfire
-let g:wildfire_objects = ["i'", 'i"', 'i)', 'i]', 'i}', 'ip', 'it']
 
 " easymotion
 let g:EasyMotion_do_mapping = 0
@@ -426,36 +420,44 @@ endif
 nnoremap j gj
 nnoremap k gk
 inoremap jk <esc>
+inoremap jj <esc>
 nnoremap B ^
 nnoremap E $
-nnoremap <silent> <leader>o :browse oldfiles<CR>
 
-inoremap <esc> <nop>
-nnoremap $ <nop>
-nnoremap ^ <nop>
+"
+nnoremap <silent> n :norm! nzz<CR>
+nnoremap <silent> N :norm! Nzz<CR>
+vnoremap <silent> n :norm! nzz<CR>
+vnoremap <silent> N :norm! Nzz<CR>
+
+"
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <C-f> <C-f>zz
+nnoremap <C-b> <C-b>zz
+vnoremap <C-u> <C-u>zz
+vnoremap <C-d> <C-d>zz
+vnoremap <C-f> <C-f>zz
+vnoremap <C-b> <C-b>zz
+
+" 
+xnoremap <  <gv
+xnoremap >  >gv
 
 " nerdtree
 nnoremap <leader>n :NERDTreeToggle<CR>
 
 " buffers
-nnoremap <silent> q :BD<CR>
-nnoremap <silent> <S-q> :bd<CR>
-nnoremap <silent> <Tab> <C-w>w 
-nnoremap <silent> <S-Tab> :bnext<CR>
+nnoremap <silent> q :bd<CR>
+nnoremap <silent> Q :qa!<CR>
+nnoremap <silent> <Tab> :bnext<CR> 
+nnoremap <silent> <S-Tab> :bprev<CR>
 
 " split
-nnoremap <silent> <leader>sj <C-W><C-J>
-nnoremap <silent> <leader>sk <C-W><C-K>
-nnoremap <silent> <leader>sl <C-W><C-L>
-nnoremap <silent> <leader>sh <C-W><C-H>
-nnoremap <silent> <leader>so <C-W>o
-nnoremap <silent> <leader>sn <C-W>=
-nnoremap <silent> <leader>sv :vsp<CR>
-nnoremap <silent> <leader>ss :sp<CR>
-nnoremap <silent> <Up> :resize +2<CR>
-nnoremap <silent> <Down> :resize -2<CR>
-nnoremap <silent> <Left> :vertical resize +2<CR>
-nnoremap <silent> <Right> :vertical resize -2<CR>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 " easymotion
 nmap f <Plug>(easymotion-overwin-f)
@@ -500,6 +502,24 @@ nnoremap <silent> <leader>ys :Yanks<CR>
 " vim config
 nnoremap <silent> <leader>vc :e $MYVIMRC<CR>
 nnoremap <silent> <leader>vr :so $MYVIMRC<CR>
+
+" disabling unneeded keys 
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <bs> <nop>
+nnoremap <delete> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap <Space> <nop>
+inoremap <F1> <nop>
+nnoremap <F1> <nop>
+inoremap <esc> <nop>
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 " debug
 
