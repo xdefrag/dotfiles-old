@@ -11,6 +11,7 @@ URxvt.boldItalicFont: xft:Iosevka Term:bold:italic:size=20
 URxvt.scrollBar: false
 URxvt.letterSpace: 0
 URxvt.internalBorder: 0
+URxvt.externalBorder: 0
 URxvt.borderless: 1
 
 *background: #002b36

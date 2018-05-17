@@ -24,9 +24,7 @@ test -e /usr/local/share/autojump/autojump.fish; and source /usr/local/share/aut
 
 # completion
 test -e /usr/share/fish/completions; and source /usr/share/fish/completions/*
-
 test -e ~/.config/fish/completions; and source ~/.config/fish/completions/*
-
 not test -e ~/.local/share/fish/generated_completions; and fish_update_completions
 
 # phpbrew
@@ -37,13 +35,14 @@ test -e ~/go; and set -gx GOPATH ~/go; set -gx PATH ~/go/bin $PATH
 
 # composer 
 test -e ~/.composer; and set -gx PATH ~/.composer/vendor/bin $PATH
-
 test -e ~/.config/composer; and set -gx PATH ~/.config/composer/vendor/bin $PATH
 
 # osx python' bin
 test -e ~/Library/Python/2.7/bin; and set -gx PATH ~/Library/Python/2.7/bin $PATH
-
 test -e ~/Library/Python/3.6/bin; and set -gx PATH ~/Library/Python/3.6/bin $PATH
+
+# aliases
+alias g "googler -n 5 -c en -l en"
 
 # common
 abbr l "ls"
@@ -62,8 +61,9 @@ abbr .... "cd ../../../.."
 abbr gs "git status"
 abbr gd "git diff"
 abbr ga "git add ."
-abbr gc "git commit"
-abbr gcm "git commit -m"
+abbr gc "git checkout"
+abbr gci "git commit"
+abbr gcim "git commit -m"
 abbr gco "git checkout"
 abbr gss "git stash"
 abbr gsa "git stash apply"

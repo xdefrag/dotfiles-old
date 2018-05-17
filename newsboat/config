@@ -1,6 +1,6 @@
 # basic {{{
 auto-reload yes
-browser open
+browser "w3m %u"
 cleanup-on-quit yes
 delete-read-articles-on-quit yes
 download-full-page yes

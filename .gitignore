@@ -1,4 +1,5 @@
 fish/fishd*
+newsboat/cache.db
 newsboat/cache.db.lock
 newsboat/history.cmdline
 newsboat/history.search

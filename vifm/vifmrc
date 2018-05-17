@@ -23,37 +23,58 @@ set statusline=""
 colorscheme solarized-dark
 
 " Pdf
-fileviewer *.pdf pdftotext -nopgbrk %c -
+filetype *.pdf
+    \ pdftotext -nopgbrk %c | less -r
+fileviewer *.pdf 
+    \ pdftotext -nopgbrk %c -
 
 " Audio
-filetype *.ogg,*.aiff,*.wav,*.mp3 mpv %c
+filetype *.ogg,*.aiff,*.wav,*.mp3,*.aif,*.aiff
+    \ mpv %c
+fileviewer *.ogg,*.aiff,*.wav,*.mp3,*.aif,*.aiff
+    \ ffprobe -pretty %c 2>&1
 
 " Video
 filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
-           \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
-           \*.as[fx]
-           \ mpv --autofit 1024x768 %c
+   \ *.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+   \ *.as[fx]
+   \ mpv --autofit 1024x768 %c
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+   \ *.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+   \ *.as[fx]
+   \ ffprobe -pretty %c 2>&1
 
 " Web
-fileviewer *.html,*.htm w3m -dump -T text/html
+filetype *.html *.html 
+    \ nvim %c
+fileviewer *.html,*.htm 
+    \ w3m -dump -T text/html %c
 
 " Image
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+    \ mpv --pause --autofit 1024x768 %c
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ mpv --pause --autofit 1024x768 %c
+    \ echo 
 
 " Extract zip files
-filetype *.zip unzip %f
-fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
+filetype *.zip 
+    \ unzip %f
+fileviewer *.zip,*.jar,*.war,*.ear 
+    \ zip -sf %c
 
 " Extract tar archives
-filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -xf %f
-fileviewer *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz tar -tf %f
+filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz 
+    \ tar -xf %f
+fileviewer *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz 
+    \ tar -tf %f
 
 " Extract .bz2 archives
-filetype *.bz2 bzip2 -d %f
+filetype *.bz2 
+    \ bzip2 -d %f
 
 " Extract .gz files
-filetype *.gz gunzip %f
+filetype *.gz 
+    \ unzip %f
 
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
