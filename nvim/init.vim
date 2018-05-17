@@ -281,7 +281,7 @@ let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 " neomake {{{
 call neomake#configure#automake('nrwi')
 let g:neomake_highlight_lines = 1
-let g:neomake_open_list = 2
+let g:neomake_open_list = 0
 
 let g:neomake_php_enabled_makers = ['phpstan']
 let g:neomake_fish_enabled_makers = []
@@ -498,6 +498,13 @@ nnoremap <silent> <leader>u :GundoToggle<CR>
 
 " easyclip
 nnoremap <silent> <leader>ys :Yanks<CR>
+
+" terminal
+tnoremap <Esc> <C-\><C-n>
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
 
 " vim config
 nnoremap <silent> <leader>vc :e $MYVIMRC<CR>

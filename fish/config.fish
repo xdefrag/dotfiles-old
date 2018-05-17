@@ -6,7 +6,7 @@ if test -z $TMUX
 end
 
 # environment variables
-set -gx MANPAGER "col -b | nvim -MR - "
+set -gx MANPAGER less
 set -gx SHELL (which fish)
 set -U EDITOR nvim
 set -U VISUAL nvim
@@ -71,6 +71,7 @@ abbr gb "git branch"
 abbr grh "git reset --hard"
 abbr pull "git pull"
 abbr push "git push"
+abbr gd "git diff"
 
 # docker-compose
 abbr dcu "docker-compose up -d"
@@ -94,6 +95,7 @@ abbr n newsboat
 abbr m neomutt
 abbr p pass
 abbr df "df -h"
+abbr xm "xrdb -merge ~/.Xresources"
 
 # fish config
 abbr fc "nvim ~/.config/fish/config.fish; source ~/.config/fish/config.fish"
