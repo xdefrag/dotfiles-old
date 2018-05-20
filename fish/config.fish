@@ -37,6 +37,9 @@ test -e ~/go; and set -gx GOPATH ~/go; set -gx PATH ~/go/bin $PATH
 test -e ~/.composer; and set -gx PATH ~/.composer/vendor/bin $PATH
 test -e ~/.config/composer; and set -gx PATH ~/.config/composer/vendor/bin $PATH
 
+# cargo
+test -e ~/.cargo; and set -gx PATH ~/.cargo/bin $PATH
+
 # osx python' bin
 test -e ~/Library/Python/2.7/bin; and set -gx PATH ~/Library/Python/2.7/bin $PATH
 test -e ~/Library/Python/3.6/bin; and set -gx PATH ~/Library/Python/3.6/bin $PATH

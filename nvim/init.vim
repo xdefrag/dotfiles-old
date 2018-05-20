@@ -20,8 +20,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('iCyMind/NeoSolarized')
     " fancy start screen with recent files
     call dein#add('mhinz/vim-startify')
-    " filebrowser
-    call dein#add('scrooloose/nerdtree')
     " advanced yanking
     call dein#add('svermeulen/vim-easyclip')
     " buff tabs
@@ -31,6 +29,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('junegunn/fzf.vim', {
                 \ 'build' : './install --all',
                 \ })
+    " clever-f
+    call dein#add('rhysd/clever-f.vim')
     " easymotion
     call dein#add('easymotion/vim-easymotion')
     " incsearch
@@ -147,9 +147,10 @@ endif
 " }}}
 
 " netrw {{{
-" disabling netrw
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+let g:netrw_banner       = 0
+let g:netrw_keepdir      = 0
+let g:netrw_liststyle    = 1
+let g:netrw_sort_options = 'i'
 " }}}
 
 " nvim config {{{
@@ -181,10 +182,37 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" no backup
-set nobackup
-set nowb
-set noswapfile
+" backups
+if isdirectory($HOME . '/.cache/nvim/backup') == 0
+    call mkdir($HOME.'/.cache/nvim/backup', 'p')
+endif
+set backupdir-=.
+set backupdir-=~/
+set backupdir^=~/.cache/nvim/backup/
+set backup
+
+" swap
+if isdirectory($HOME . '/.cache/nvim/swap') == 0
+    call mkdir($HOME.'/.cache/nvim/swap', 'p')
+endif
+set directory+=~/.cache/nvim/swap//
+set directory+=~/tmp//
+set directory+=.
+
+if exists('+shada')
+    set shada+=n~/.nvim/shada
+else
+    set viminfo+=n~/.nvim/viminfo
+endif
+
+" undo
+if exists('+undofile')
+    if isdirectory($HOME . '/.cache/nvim/undo') == 0
+        call mkdir($HOME.'/.cache/nvim/undo', 'p')
+    endif
+    set undodir+=~/.cache/nvim/undo//
+    set undofile
+endif
 
 " tabs
 set expandtab
@@ -220,7 +248,6 @@ set background=dark
 " lightline fix
 colorscheme solarized
 colorscheme NeoSolarized
-
 " }}}
 
 " plugins config {{{
@@ -252,14 +279,13 @@ let g:EasyClipAlwaysMoveCursorToEndOfPaste = 1
 let g:EasyClipShareYanks = 1
 let g:EasyClipUseSubstituteDefaults = 1
 
+" clever-f
+let g:clever_f_across_no_line = 1
+let g:clever_f_smart_case = 1
+
 " easymotion
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
-
-" nerdtree
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
-let g:NERDTreeMapActivateNode = 'l'
 
 " signify
 let g:signify_realtime = 1
@@ -327,9 +353,6 @@ let g:vdebug_options= {
             \    "on_close" : 'detach',
             \    "break_on_open" : 1,
             \    "ide_key" : '',
-            \    "path_maps" : { 
-            \    "/var/www/api-data" : "/Users/xdefrag/Code/takelook/api/src",
-            \    },
             \    "debug_window_level" : 0,
             \    "debug_file_level" : 0,
             \    "debug_file" : "",
@@ -424,13 +447,13 @@ inoremap jj <esc>
 nnoremap B ^
 nnoremap E $
 
-"
+" centering on next n
 nnoremap <silent> n :norm! nzz<CR>
 nnoremap <silent> N :norm! Nzz<CR>
 vnoremap <silent> n :norm! nzz<CR>
 vnoremap <silent> N :norm! Nzz<CR>
 
-"
+" centering on navigation
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-f> <C-f>zz
@@ -440,12 +463,12 @@ vnoremap <C-d> <C-d>zz
 vnoremap <C-f> <C-f>zz
 vnoremap <C-b> <C-b>zz
 
-" 
+"
 xnoremap <  <gv
 xnoremap >  >gv
 
-" nerdtree
-nnoremap <leader>n :NERDTreeToggle<CR>
+" netrw
+nnoremap <silent> <leader>n :Explore<CR>
 
 " buffers
 nnoremap <silent> q :bd<CR>
@@ -460,7 +483,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " easymotion
-nmap f <Plug>(easymotion-overwin-f)
+nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
 noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
