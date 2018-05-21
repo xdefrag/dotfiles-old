@@ -484,10 +484,10 @@ nnoremap <C-l> <C-w>l
 
 " easymotion
 nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
-noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
-noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+noremap <silent> <expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
+noremap <silent> <expr> /  incsearch#go(<SID>incsearch_config())
+noremap <silent> <expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
+noremap <silent> <expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
 
 " neosnippet
 nnoremap <silent> <leader>ne :NeoSnippetEdit -split<CR>
