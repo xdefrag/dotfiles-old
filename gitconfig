@@ -18,3 +18,5 @@
 [user]
     name = Stanislaw Mnizhek
     email = me@stanislawmnizhek.ru
+[url "https://"]
+	insteadOf = git://

@@ -1,6 +1,6 @@
 # general {{{
 set $mod Mod4
-font pango:Iosevka Term 18
+font pango:Iosevka Term 14
 floating_modifier $mod
 new_window 1pixel
 # }}}
@@ -86,5 +86,5 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-        status_command i3status
+    status_command i3status
 }
