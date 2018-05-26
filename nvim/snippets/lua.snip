@@ -1,28 +1,51 @@
 snippet table
 alias t
-    local ${0:`expand('%:t:r')`} = {}
+  local ${0:`expand('%:t:r')`} = {}
 
-    return $0
+  return $0
 snippet test
 alias tt
-    local tap = require('tap')
+  local ${0:`expand('%:t:r')`} = {
+    name = '',
+    plan = 1
+  }
 
-    function ${0:`expand('%:t:r')`}:run()
-        local taptest = tap.test('$0')
+  local tap = require('tap')
 
-        taptest:plan(1)
-        taptest:diag('$0 run')
+  function $0:run()
+    local taptest = tap.test(self.name)
 
-        taptest:ok(true, 'True is true')
+    taptest:plan(self.plan)
+    taptest:diag('$0 run')
 
-        taptest:check()
-    end
+    taptest:ok(true, 'True is true')
+
+    taptest:check()
+  end
+
+  return $0
+snippet dump
+alias d
+  local dump = require('pl.pretty').dump
 snippet arvo_schema
 alias arvo
-    {
-        type = 'record',
-        name = '${0}',
-        fields = {
-            { name = "", type = "", default = "" }
-        }
+  {
+    type = 'record',
+    name = '${0}',
+    fields = {
+        { name = "", type = "", default = "" }
     }
+  }
+snippet migration
+alias mig
+  ${1:`expand('%:t:r')`}.name = '${0}'
+  $1.sq = $1.name .. '_sq'
+
+  function $1:run()
+    box.schema.space.create(self.name)
+    box.schema.sequence.create(self.sq, { min = 1, start = 1 })
+    box.space[self.name]:create_index('primary', { sequence = self.sq })
+
+  end
+
+

@@ -333,6 +333,26 @@ let g:php_namespace_sort_after_insert = 1
 " vim-php-refactoring-toolbox
 let g:vim_php_refactoring_use_default_mapping = 0
 
+" lua
+let g:lua_compiler_name = '/usr/bin/luacheck'
+let g:lua_compiler_args = '--no-redefined --no-unused-args'
+" let g:lua_path = 
+let g:lua_check_syntax = 1
+let g:lua_check_globals = 1
+let g:lua_interpreter_path = '/usr/bin/tarantool'
+" let g:lua_internal = 
+" let g:lua_error_format = 
+let g:lua_complete_keywords = 1
+let g:lua_complete_globals = 1
+let g:lua_complete_library = 1
+let g:lua_complete_dynamic = 1
+let g:lua_complete_omni = 1
+let g:lua_omni_blacklist = []
+let g:lua_safe_omni_modules = 1
+" let g:lua_define_completefunc = 
+" let g:lua_define_omnifunc = 
+" let g:lua_define_completion_mappings = 
+
 " markdown
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
@@ -444,6 +464,8 @@ nnoremap j gj
 nnoremap k gk
 inoremap jk <esc>
 inoremap jj <esc>
+inoremap ол <esc>
+inoremap оо <esc>
 nnoremap B ^
 nnoremap E $
 
