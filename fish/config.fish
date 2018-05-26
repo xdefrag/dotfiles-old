@@ -43,6 +43,8 @@ test -e ~/.cargo; and set -gx PATH ~/.cargo/bin $PATH
 # osx python' bin
 test -e ~/Library/Python/2.7/bin; and set -gx PATH ~/Library/Python/2.7/bin $PATH
 test -e ~/Library/Python/3.6/bin; and set -gx PATH ~/Library/Python/3.6/bin $PATH
+test -e /Library/Frameworks/Python.framework/Versions/2.7/bin/; and set -gx PATH /Library/Frameworks/Python.framework/Versions/2.7/bin/ $PATH
+test -e /Library/Frameworks/Python.framework/Versions/3.6/bin/; and set -gx PATH /Library/Frameworks/Python.framework/Versions/3.6/bin/ $PATH
 
 # aliases
 alias g "googler -n 5 -c en -l en"
