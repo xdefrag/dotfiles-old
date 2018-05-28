@@ -88,6 +88,10 @@ abbr dce "docker-compose exec"
 abbr dcr "docker-compose restart"
 abbr dcb "docker-compose build"
 
+# kubectl
+abbr k "kubectl"
+abbr kga "kubectl get all"
+
 # apps
 abbr cask "brew cask"
 abbr ag "ag --follow --hidden"
