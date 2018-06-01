@@ -1,29 +1,31 @@
 snippet table
 alias t
-  local ${0:`expand('%:t:r')`} = {}
+  local  ${1:`expand('%:t:r')`} = {}
+  
 
-  return $0
+
+  return $1
 snippet test
 alias tt
-  local ${0:`expand('%:t:r')`} = {
-    name = '',
+  local ${1:`expand('%:t:r')`} = {
+    name = ${0},
     plan = 1
   }
 
   local tap = require('tap')
 
-  function $0:run()
+  function $1:run()
     local taptest = tap.test(self.name)
 
     taptest:plan(self.plan)
-    taptest:diag('$0 run')
+    taptest:diag(self.name)
 
     taptest:ok(true, 'True is true')
 
     taptest:check()
   end
 
-  return $0
+  return $1
 snippet dump
 alias d
   local dump = require('pl.pretty').dump
@@ -44,7 +46,9 @@ alias mig
   function $1:run()
     box.schema.space.create(self.name)
     box.schema.sequence.create(self.sq, { min = 1, start = 1 })
-    box.space[self.name]:create_index('primary', { sequence = self.sq })
+
+    local s = box.space[self.name]
+    s:create_index('id', { sequence = self.sq })
 
   end
 

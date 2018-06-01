@@ -250,6 +250,10 @@ colorscheme solarized
 colorscheme NeoSolarized
 " }}}
 
+" filetypes {{{
+au BufNewFile,BufRead *.avro setf json
+" }}}
+
 " plugins config {{{
 " lightline
 let g:lightline = {
@@ -494,7 +498,7 @@ nnoremap <silent> <leader>n :Explore<CR>
 
 " buffers
 nnoremap <silent> q :bd<CR>
-nnoremap <silent> Q :qa!<CR>
+nnoremap <silent> Q :q<CR>
 nnoremap <silent> <Tab> :bnext<CR> 
 nnoremap <silent> <S-Tab> :bprev<CR>
 
