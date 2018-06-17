@@ -12,10 +12,6 @@ set -U EDITOR nvim
 set -U VISUAL nvim
 set -U fisher_copy true
 
-# the fuck
-thefuck --alias | source
-alias fish_key_reader /usr/local/bin/fish_key_reader
-
 # cheat.sh
 curl -s cheat.sh/:fish | source
 
@@ -31,7 +27,11 @@ not test -e ~/.local/share/fish/generated_completions; and fish_update_completio
 test -e ~/.phpbrew; and source ~/.phpbrew/phpbrew.fish
 
 # go
+test -e /usr/local/opt/go/libexec/bin; and set -gx PATH /usr/local/opt/go/libexec/bin $PATH
 test -e ~/go; and set -gx GOPATH ~/go; set -gx PATH ~/go/bin $PATH
+
+# npm
+test -e ~/.config/fnm/bin; and set -gx PATH ~/.config/fnm/bin $PATH
 
 # composer 
 test -e ~/.composer; and set -gx PATH ~/.composer/vendor/bin $PATH

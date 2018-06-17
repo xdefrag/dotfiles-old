@@ -334,12 +334,12 @@ let g:php_namespace_sort_after_insert = 1
 let g:vim_php_refactoring_use_default_mapping = 0
 
 " lua
-let g:lua_compiler_name = '/usr/bin/luacheck'
+let g:lua_compiler_name = 'luacheck'
 let g:lua_compiler_args = '--no-redefined --no-unused-args'
 " let g:lua_path = 
 let g:lua_check_syntax = 1
 let g:lua_check_globals = 1
-let g:lua_interpreter_path = '/usr/bin/tarantool'
+let g:lua_interpreter_path = 'tarantool'
 " let g:lua_internal = 
 " let g:lua_error_format = 
 let g:lua_complete_keywords = 1
