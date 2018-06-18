@@ -12,10 +12,6 @@ set -U EDITOR nvim
 set -U VISUAL nvim
 set -U fisher_copy true
 
-# the fuck
-thefuck --alias | source
-alias fish_key_reader /usr/local/bin/fish_key_reader
-
 # cheat.sh
 curl -s cheat.sh/:fish | source
 
@@ -31,7 +27,11 @@ not test -e ~/.local/share/fish/generated_completions; and fish_update_completio
 test -e ~/.phpbrew; and source ~/.phpbrew/phpbrew.fish
 
 # go
+test -e /usr/local/opt/go/libexec/bin; and set -gx PATH /usr/local/opt/go/libexec/bin $PATH
 test -e ~/go; and set -gx GOPATH ~/go; set -gx PATH ~/go/bin $PATH
+
+# npm
+test -e ~/.config/fnm/bin; and set -gx PATH ~/.config/fnm/bin $PATH
 
 # composer 
 test -e ~/.composer; and set -gx PATH ~/.composer/vendor/bin $PATH
@@ -43,6 +43,8 @@ test -e ~/.cargo; and set -gx PATH ~/.cargo/bin $PATH
 # osx python' bin
 test -e ~/Library/Python/2.7/bin; and set -gx PATH ~/Library/Python/2.7/bin $PATH
 test -e ~/Library/Python/3.6/bin; and set -gx PATH ~/Library/Python/3.6/bin $PATH
+test -e /Library/Frameworks/Python.framework/Versions/2.7/bin/; and set -gx PATH /Library/Frameworks/Python.framework/Versions/2.7/bin/ $PATH
+test -e /Library/Frameworks/Python.framework/Versions/3.6/bin/; and set -gx PATH /Library/Frameworks/Python.framework/Versions/3.6/bin/ $PATH
 
 # aliases
 alias g "googler -n 5 -c en -l en"
@@ -85,6 +87,10 @@ abbr dcl "docker-compose logs -f"
 abbr dce "docker-compose exec"
 abbr dcr "docker-compose restart"
 abbr dcb "docker-compose build"
+
+# kubectl
+abbr k "kubectl"
+abbr kga "kubectl get all"
 
 # apps
 abbr cask "brew cask"

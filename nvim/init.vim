@@ -10,139 +10,141 @@ set shell=/bin/bash
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.cache/dein')
-    call dein#begin('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-    call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-    " essentials {{{
-    " solorized colorscheme
-    call dein#add('altercation/vim-colors-solarized')
-    call dein#add('iCyMind/NeoSolarized')
-    " fancy start screen with recent files
-    call dein#add('mhinz/vim-startify')
-    " advanced yanking
-    call dein#add('svermeulen/vim-easyclip')
-    " buff tabs
-    call dein#add('ap/vim-buftabline')
-    " fuzzy finder
-    call dein#add('junegunn/fzf')
-    call dein#add('junegunn/fzf.vim', {
-                \ 'build' : './install --all',
-                \ })
-    " clever-f
-    call dein#add('rhysd/clever-f.vim')
-    " easymotion
-    call dein#add('easymotion/vim-easymotion')
-    " incsearch
-    call dein#add('haya14busa/incsearch.vim')
-    call dein#add('haya14busa/incsearch-easymotion.vim')
-    call dein#add('haya14busa/incsearch-fuzzy.vim')
-    " git
-    call dein#add('mhinz/vim-signify')
-    call dein#add('tpope/vim-fugitive')
-    " undo history
-    call dein#add('sjl/gundo.vim')
-    " . support for a bunch of plugins
-    call dein#add('tpope/vim-repeat')
-    " simple status bar
-    call dein#add('itchyny/lightline.vim')
-    " advanced commenting
-    call dein#add('tpope/vim-commentary')
-    " advanced word substitiution
-    call dein#add('tpope/vim-abolish')
-    " changing surround symbols
-    call dein#add('tpope/vim-surround')
-    " the_silver_searcher interface
-    call dein#add('wincent/ferret')
-    " code quality tools
-    call dein#add('neomake/neomake')
-    " list of class methods, variables etc
-    call dein#add('majutsushi/tagbar')
-    " debugger
-    call dein#add('joonty/vdebug')
-    " autoclosing pair symbols
-    call dein#add('Townk/vim-autoclose')
-    " snippet manager
-    call dein#add('Shougo/neosnippet.vim')
-    " editorconfig support
-    call dein#add('editorconfig/editorconfig-vim')
-    " autotag
-    call dein#add('craigemery/vim-autotag')
-    " }}}
+  " essentials {{{
+  " solorized colorscheme
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('iCyMind/NeoSolarized')
+  " fancy start screen with recent files
+  call dein#add('mhinz/vim-startify')
+  " advanced yanking
+  call dein#add('svermeulen/vim-easyclip')
+  " buff tabs
+  call dein#add('ap/vim-buftabline')
+  " fuzzy finder
+  call dein#add('junegunn/fzf', { 
+        \ 'build' : 'make',
+        \  })
+  call dein#add('junegunn/fzf.vim', {
+        \ 'build' : './install --all',
+        \ })
+  " clever-f
+  call dein#add('rhysd/clever-f.vim')
+  " easymotion
+  call dein#add('easymotion/vim-easymotion')
+  " incsearch
+  call dein#add('haya14busa/incsearch.vim')
+  call dein#add('haya14busa/incsearch-easymotion.vim')
+  call dein#add('haya14busa/incsearch-fuzzy.vim')
+  " git
+  call dein#add('mhinz/vim-signify')
+  call dein#add('tpope/vim-fugitive')
+  " undo history
+  call dein#add('sjl/gundo.vim')
+  " . support for a bunch of plugins
+  call dein#add('tpope/vim-repeat')
+  " simple status bar
+  call dein#add('itchyny/lightline.vim')
+  " advanced commenting
+  call dein#add('tpope/vim-commentary')
+  " advanced word substitiution
+  call dein#add('tpope/vim-abolish')
+  " changing surround symbols
+  call dein#add('tpope/vim-surround')
+  " the_silver_searcher interface
+  call dein#add('wincent/ferret')
+  " code quality tools
+  call dein#add('neomake/neomake')
+  " list of class methods, variables etc
+  call dein#add('majutsushi/tagbar')
+  " debugger
+  call dein#add('joonty/vdebug')
+  " autoclosing pair symbols
+  call dein#add('Townk/vim-autoclose')
+  " snippet manager
+  call dein#add('Shougo/neosnippet.vim')
+  " editorconfig support
+  call dein#add('editorconfig/editorconfig-vim')
+  " autotag
+  call dein#add('craigemery/vim-autotag')
+  " }}}
 
-    " markdown {{{
-    call dein#add('godlygeek/tabular')
-    call dein#add('plasticboy/vim-markdown')
-    " }}}
+  " markdown {{{
+  call dein#add('godlygeek/tabular')
+  call dein#add('plasticboy/vim-markdown')
+  " }}}
 
-    " json {{{
-    call dein#add('elzr/vim-json', { 'on_ft' : 'json' })
-    " }}}
+  " json {{{
+  call dein#add('elzr/vim-json', { 'on_ft' : 'json' })
+  " }}}
 
-    " php {{{
-    " better syntax coloring
-    call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php' })
-    " autocomplete
-    call dein#add('lvht/phpcd.vim', {
-                \ 'on_ft' : 'php',
-                \ 'build' : 'composer install',
-                \ })
-    " indenting and correcting simple errors on save
-    call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php' })
-    " advanced refactoring tools
-    call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft' : 'php' })
-    " php use
-    call dein#add('arnaud-lb/vim-php-namespace', { 'on_ft' : 'php' })
-    " }}}
+  " php {{{
+  " better syntax coloring
+  call dein#add('StanAngeloff/php.vim', { 'on_ft' : 'php' })
+  " autocomplete
+  call dein#add('lvht/phpcd.vim', {
+        \ 'on_ft' : 'php',
+        \ 'build' : 'composer install',
+        \ })
+  " indenting and correcting simple errors on save
+  call dein#add('stephpy/vim-php-cs-fixer', { 'on_ft' : 'php' })
+  " advanced refactoring tools
+  call dein#add('adoy/vim-php-refactoring-toolbox', { 'on_ft' : 'php' })
+  " php use
+  call dein#add('arnaud-lb/vim-php-namespace', { 'on_ft' : 'php' })
+  " }}}
 
-    " js {{{
-    call dein#add('ternjs/tern_for_vim', {
-                \ 'on_ft' : 'js',
-                \ 'build' : 'npm i',
-                \ })
-    " }}}
+  " js {{{
+  call dein#add('ternjs/tern_for_vim', {
+        \ 'on_ft' : 'js',
+        \ 'build' : 'npm i',
+        \ })
+  " }}}
 
-    " go {{{
-    call dein#add('fatih/vim-go', {
-                \ 'on_ft' : 'go',
-                \ 'build' : ':GoUpdateBinaries' })
-    " }}}
+  " go {{{
+  call dein#add('fatih/vim-go', {
+        \ 'on_ft' : 'go',
+        \ 'build' : ':GoUpdateBinaries' })
+  " }}}
 
-    " lua {{{
-    " call dein#add('tbastos/vim-lua', { 'on_ft' : 'lua' })
-    call dein#add('xolox/vim-misc', { 'on_ft' : 'lua' })
-    call dein#add('xolox/vim-lua-ftplugin', { 'on_ft' : 'lua' })
-    " }}}
+  " lua {{{
+  call dein#add('tbastos/vim-lua', { 'on_ft' : 'lua' })
+  call dein#add('xolox/vim-misc', { 'on_ft' : 'lua' })
+  call dein#add('xolox/vim-lua-ftplugin', { 'on_ft' : 'lua' })
+  " }}}
 
-    " autocomplete {{{
-    " deoplete
-    call dein#add('Shougo/deoplete.nvim', {
-                \ 'build' : ':UpdateRemotePlugins',
-                \ })
-    " python
-    call dein#add('zchee/deoplete-jedi')
-    " js
-    call dein#add('carlitux/deoplete-ternjs', {
-                \ 'build' : 'npm i -g tern',
-                \ })
-    " go
-    call dein#add('zchee/deoplete-go', { 
-                \ 'on_ft' : 'go',
-                \ 'build' : 'make' })
-    " emojis, yeah!
-    call dein#add('fszymanski/deoplete-emoji')
-    " }}}
+  " autocomplete {{{
+  " deoplete
+  call dein#add('Shougo/deoplete.nvim', {
+        \ 'build' : ':UpdateRemotePlugins',
+        \ })
+  " python
+  call dein#add('zchee/deoplete-jedi')
+  " js
+  call dein#add('carlitux/deoplete-ternjs', {
+        \ 'build' : 'npm i -g tern',
+        \ })
+  " go
+  call dein#add('zchee/deoplete-go', { 
+        \ 'on_ft' : 'go',
+        \ 'build' : 'make' })
+  " emojis, yeah!
+  call dein#add('fszymanski/deoplete-emoji')
+  " }}}
 
-    " misc {{{
-    " }}}
+  " misc {{{
+  " }}}
 
-    call dein#end()
-    call dein#save_state()
+  call dein#end()
+  call dein#save_state()
 endif
 
 " on nvim startup check that all packages installed
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 " }}}
 
@@ -184,7 +186,7 @@ set tm=500
 
 " backups
 if isdirectory($HOME . '/.cache/nvim/backup') == 0
-    call mkdir($HOME.'/.cache/nvim/backup', 'p')
+  call mkdir($HOME.'/.cache/nvim/backup', 'p')
 endif
 set backupdir-=.
 set backupdir-=~/
@@ -193,25 +195,25 @@ set backup
 
 " swap
 if isdirectory($HOME . '/.cache/nvim/swap') == 0
-    call mkdir($HOME.'/.cache/nvim/swap', 'p')
+  call mkdir($HOME.'/.cache/nvim/swap', 'p')
 endif
 set directory+=~/.cache/nvim/swap//
 set directory+=~/tmp//
 set directory+=.
 
 if exists('+shada')
-    set shada+=n~/.nvim/shada
+  set shada+=n~/.nvim/shada
 else
-    set viminfo+=n~/.nvim/viminfo
+  set viminfo+=n~/.nvim/viminfo
 endif
 
 " undo
 if exists('+undofile')
-    if isdirectory($HOME . '/.cache/nvim/undo') == 0
-        call mkdir($HOME.'/.cache/nvim/undo', 'p')
-    endif
-    set undodir+=~/.cache/nvim/undo//
-    set undofile
+  if isdirectory($HOME . '/.cache/nvim/undo') == 0
+    call mkdir($HOME.'/.cache/nvim/undo', 'p')
+  endif
+  set undodir+=~/.cache/nvim/undo//
+  set undofile
 endif
 
 " tabs
@@ -257,24 +259,24 @@ au BufNewFile,BufRead *.avro setf json
 " plugins config {{{
 " lightline
 let g:lightline = {
-            \ 'colorscheme' : 'solarized',
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'readonly', 'filename', 'modified', 'gitbranch' ] ],
-            \   'right': [ [ 'lineinfo' ],
-            \              [ 'percent' ] ]
-            \ },
-            \ }
+      \ 'colorscheme' : 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'gitbranch' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ] ]
+      \ },
+      \ }
 
 " startify
 let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header = ['']
 let g:startify_change_to_vcs_root = 1
 let g:startify_bookmarks = [
-            \ '~/.config/nvim/init.vim',
-            \ '~/.config/vifm/vifmrc',
-            \ '~/.config/fish/config.fish',
-            \ ]
+      \ '~/.config/nvim/init.vim',
+      \ '~/.config/vifm/vifmrc',
+      \ '~/.config/fish/config.fish',
+      \ ]
 
 " easyclip
 set clipboard=unnamed
@@ -304,8 +306,8 @@ let g:deoplete#ignore_sources.lua = ['omni']
 
 " neosnippet
 let g:neosnippet#disable_runtime_snippets = {
-            \   '_' : 1,
-            \ }
+      \   '_' : 1,
+      \ }
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets'
 
 " neomake {{{
@@ -318,17 +320,17 @@ let g:neomake_fish_enabled_makers = []
 
 " symbols
 let g:neomake_error_sign = {
-            \ 'text': 'E',
-            \ }
+      \ 'text': 'E',
+      \ }
 let g:neomake_warning_sign = {
-            \ 'text': 'W',
-            \ }
+      \ 'text': 'W',
+      \ }
 let g:neomake_info_sign = {
-            \ 'text': 'I',
-            \ }
+      \ 'text': 'I',
+      \ }
 let g:neomake_message_sign = {
-            \ 'text': 'M',
-            \ }
+      \ 'text': 'M',
+      \ }
 " }}}
 
 " vim-php-namespace
@@ -338,12 +340,12 @@ let g:php_namespace_sort_after_insert = 1
 let g:vim_php_refactoring_use_default_mapping = 0
 
 " lua
-let g:lua_compiler_name = '/usr/bin/luacheck'
+let g:lua_compiler_name = 'luacheck'
 let g:lua_compiler_args = '--no-redefined --no-unused-args'
 " let g:lua_path = 
 let g:lua_check_syntax = 1
 let g:lua_check_globals = 1
-let g:lua_interpreter_path = '/usr/bin/tarantool'
+let g:lua_interpreter_path = 'tarantool'
 " let g:lua_internal = 
 " let g:lua_error_format = 
 let g:lua_complete_keywords = 1
@@ -371,33 +373,33 @@ let g:vim_markdown_autowrite = 1
 
 " vdebug
 let g:vdebug_options= {
-            \    "port" : 9001,
-            \    "server" : '',
-            \    "timeout" : 20,
-            \    "on_close" : 'detach',
-            \    "break_on_open" : 1,
-            \    "ide_key" : '',
-            \    "debug_window_level" : 0,
-            \    "debug_file_level" : 0,
-            \    "debug_file" : "",
-            \    "watch_window_style" : 'expanded',
-            \    "marker_default" : '=',
-            \    "marker_closed_tree" : '+',
-            \    "marker_open_tree" : '-'
-            \ }
+      \    "port" : 9001,
+      \    "server" : '',
+      \    "timeout" : 20,
+      \    "on_close" : 'detach',
+      \    "break_on_open" : 1,
+      \    "ide_key" : '',
+      \    "debug_window_level" : 0,
+      \    "debug_file_level" : 0,
+      \    "debug_file" : "",
+      \    "watch_window_style" : 'expanded',
+      \    "marker_default" : '=',
+      \    "marker_closed_tree" : '+',
+      \    "marker_open_tree" : '-'
+      \ }
 let g:vdebug_keymap = {
-            \    "run" : "<leader>dr",
-            \    "run_to_cursor" : "<leader>dt",
-            \    "step_over" : "<leader>do",
-            \    "step_into" : "<leader>di",
-            \    "step_out" : "<leader>du",
-            \    "close" : "<leader>dc",
-            \    "detach" : "<leader>dd",
-            \    "set_breakpoint" : "<leader>db",
-            \    "get_context" : "<leader>dg",
-            \    "eval_under_cursor" : "<leader>d",
-            \    "eval_visual" : "<leader>de",
-            \ }
+      \    "run" : "<leader>dr",
+      \    "run_to_cursor" : "<leader>dt",
+      \    "step_over" : "<leader>do",
+      \    "step_into" : "<leader>di",
+      \    "step_out" : "<leader>du",
+      \    "close" : "<leader>dc",
+      \    "detach" : "<leader>dd",
+      \    "set_breakpoint" : "<leader>db",
+      \    "get_context" : "<leader>dg",
+      \    "eval_under_cursor" : "<leader>d",
+      \    "eval_visual" : "<leader>de",
+      \ }
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
@@ -413,51 +415,51 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 
 " vdebug
 let g:vdebug_options = {
-            \ 'port' : 9001,
-            \ }
+      \ 'port' : 9001,
+      \ }
 " }}}
 
 " helpers {{{
 " easymotion + incsearch
 function! s:incsearch_config(...) abort
-    return incsearch#util#deepextend(deepcopy({
-                \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-                \   'keymap': {
-                \     "\<CR>": '<Over>(easymotion)'
-                \   },
-                \   'is_expr': 0
-                \ }), get(a:, 1, {}))
+  return incsearch#util#deepextend(deepcopy({
+        \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+        \   'keymap': {
+        \     "\<CR>": '<Over>(easymotion)'
+        \   },
+        \   'is_expr': 0
+        \ }), get(a:, 1, {}))
 endfunction
 
 " easymotion + incserach-fuzzy
 function! s:config_easyfuzzymotion(...) abort
-    return extend(copy({
-                \   'converters': [incsearch#config#fuzzyword#converter()],
-                \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-                \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-                \   'is_expr': 0,
-                \   'is_stay': 1
-                \ }), get(a:, 1, {}))
+  return extend(copy({
+        \   'converters': [incsearch#config#fuzzyword#converter()],
+        \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+        \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+        \   'is_expr': 0,
+        \   'is_stay': 1
+        \ }), get(a:, 1, {}))
 endfunction
 
 " php use
 function! IPhpInsertUse()
-    call PhpInsertUse()
-    call feedkeys('a',  'n')
+  call PhpInsertUse()
+  call feedkeys('a',  'n')
 endfunction
 
 function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys('a', 'n')
+  call PhpExpandClass()
+  call feedkeys('a', 'n')
 endfunction
 
 " tmux cursor fix
 if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 " }}}
 
