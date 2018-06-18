@@ -48,6 +48,7 @@ test -e /Library/Frameworks/Python.framework/Versions/3.6/bin/; and set -gx PATH
 
 # aliases
 alias g "googler -n 5 -c en -l en"
+alias dotdrop "dotdrop --cfg=~/.dotfiles/config.yaml"
 
 # common
 abbr l "ls"
